@@ -42,11 +42,15 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Notifications.
 
+4. Copy the `config.php` file to `config/notifications.php` in your application.
+
 ## Introduction
 
 Typically, notifications should be short, informational messages that notify users of something that occurred in your application. For example, if you are writing a billing application, you might send an "Invoice Paid" notification to your users via the email and SMS channels.
 
 ## Creating notifications
+
+*This is not yet implemented*
 
 Each notification is represented by a single class (stored in the `notifications` directory of your application). You will have to create it manually or it will be created for you when you run the notifications/create command:
 
