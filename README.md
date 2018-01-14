@@ -50,6 +50,8 @@ Typically, notifications should be short, informational messages that notify use
 
 ## Creating notifications
 
+*This is not yet implemented*
+
 Each notification is represented by a single class (stored in the `notifications` directory of your application). You will have to create it manually or it will be created for you when you run the notifications/create command:
 
     ./craft notifications/make BlogPostAdded
