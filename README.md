@@ -44,6 +44,17 @@ To install the plugin, follow these instructions.
 
 4. Copy the `config.php` file to `config/notifications.php` in your application.
 
+5. Make sure your notifications are autoloaded by adding the following to your `composer.json` and runnning `composer dump -o`
+
+```
+"autoload": {
+    "psr-4": {
+        "app\\notifications\\": "./notifications"
+    }
+},
+```
+
+
 ## Introduction
 
 Typically, notifications should be short, informational messages that notify users of something that occurred in your application. For example, if you are writing a billing application, you might send an "Invoice Paid" notification to your users via the email and SMS channels.
