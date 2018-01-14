@@ -100,18 +100,6 @@ class Notifications extends Plugin
                 }
             );
         }
-
-        Event::on(
-            NotificationsService::class,
-            NotificationsService::EVENT_REGISTER_CHANNELS,
-            function (RegisterChannelsEvent $event) {
-                $event->channels[] = [
-                    'custom-channel' => function () {
-                        return new CustomChannel();
-                    },
-                ];
-            }
-        );
     }
 
     // Protected Methods

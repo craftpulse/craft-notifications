@@ -1,0 +1,54 @@
+<?php
+
+namespace app\notifications;
+
+use Craft;
+use craft\elements\Entry;
+use craft\helpers\ArrayHelper;
+use craft\mail\Message;
+use rias\notifications\messages\SlackMessage;
+use rias\notifications\models\Notification;
+
+class DummyClass extends Notification
+{
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @return array
+     */
+    public function via()
+    {
+        return [];
+    }
+
+    public function toDatabase()
+    {
+        return ArrayHelper::toArray($this);
+    }
+
+    public function toSlack()
+    {
+        return (new SlackMessage)
+            ->content("Hello world.");
+    }
+
+    public function toMail($notifiable)
+    {
+        $message = new Message();
+        $message->setTo($notifiable);
+        $message->setSubject("Hello world");
+        $message->setHtmlBody("Hello world.");
+
+        return $message;
+    }
+}
