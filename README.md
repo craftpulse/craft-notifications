@@ -1,6 +1,6 @@
 # Notifications plugin for Craft CMS 3.x
 
-Send notifications across a variety of delivery channels, including mail, SMS (via Nexmo), and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
+Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
 
 ![Screenshot](resources/img/plugin-logo.png)
 
