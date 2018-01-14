@@ -1,3 +1,5 @@
+![icon](./src/icon.svg)
+
 # Notifications plugin for Craft CMS 3.x
 
 Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
