@@ -31,7 +31,7 @@ class DatabaseChannel
     /**
      * Get the data for the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  ElementInterface  $notifiable
      * @param  Notification $notification
      * @return array
      *

@@ -12,8 +12,6 @@ namespace rias\notifications\services;
 
 use craft\elements\User;
 use craft\helpers\DateTimeHelper;
-use craft\helpers\Db;
-use craft\mail\Mailer;
 use GuzzleHttp\Client as HttpClient;
 use Ramsey\Uuid\Uuid;
 use rias\notifications\channels\DatabaseChannel;
@@ -21,7 +19,6 @@ use rias\notifications\channels\MailChannel;
 use rias\notifications\channels\SlackWebhookChannel;
 use rias\notifications\events\RegisterChannelsEvent;
 use rias\notifications\events\SendEvent;
-
 use Craft;
 use craft\base\Component;
 use rias\notifications\models\Notification;
@@ -82,7 +79,6 @@ class NotificationsService extends Component
      * Send the given notification to the given notifiable entities.
      *
      * @param  Notification $notification
-     * @param Event $event
      *
      * @return void
      */
@@ -197,7 +193,7 @@ class NotificationsService extends Component
      *
      * @param $notifications
      *
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
     protected function formatNotificationData($notifications)
     {
@@ -211,7 +207,7 @@ class NotificationsService extends Component
      * Determines if the notification can be sent.
      *
      * @param  mixed  $notifiable
-     * @param  mixed  $notification
+     * @param  Notification  $notification
      * @param  string  $channel
      * @return bool
      */

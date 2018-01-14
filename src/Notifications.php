@@ -10,22 +10,16 @@
 
 namespace rias\notifications;
 
-use craft\base\ElementInterface;
 use rias\notifications\events\RegisterChannelsEvent;
 use rias\notifications\jobs\SendNotification;
 use rias\notifications\models\Notification;
 use rias\notifications\models\Settings;
-use rias\notifications\services\NotificationsService as NotificationsServiceService;
 use rias\notifications\services\NotificationsService;
 use rias\notifications\variables\NotificationsVariable;
-
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
 use craft\console\Application as ConsoleApplication;
 use craft\web\twig\variables\CraftVariable;
-
 use yii\base\Event;
 
 /**
