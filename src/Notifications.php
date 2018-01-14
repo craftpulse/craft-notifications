@@ -84,7 +84,7 @@ class Notifications extends Plugin
         );
 
         // Register the events for each Notification that's configured
-        foreach ($this->settings->notifications as $notificationSettings) {
+        foreach ($this->getSettings()->notifications as $notificationSettings) {
             Event::on(
                 $notificationSettings['class'],
                 $notificationSettings['event'],
