@@ -1,0 +1,48 @@
+{
+    "name": "rias/craft-notifications",
+    "description": "Send notifications across a variety of delivery channels, including mail, SMS (via Nexmo), and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "notifications"
+    ],
+    "support": {
+        "docs": "https://github.com/Rias500/craft-notifications/blob/master/README.md",
+        "issues": "https://github.com/Rias500/craft-notifications/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rias",
+            "homepage": "https://rias.be"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1",
+        "ramsey/uuid": "^3.7",
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^1.22",
+        "tightenco/collect": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+          "rias\\notifications\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Notifications",
+        "handle": "notifications",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/Rias500/craft-notifications/master/CHANGELOG.md",
+        "components": {
+            "notificationsService": "rias\\notifications\\services\\NotificationsService"
+        },
+        "class": "rias\\notifications\\Notifications"
+    }
+}
