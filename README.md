@@ -1,6 +1,7 @@
 ![icon](./src/icon.svg)
 
 ![StyleCI](https://styleci.io/repos/117422620/shield?branch=master)
+![Scrutinizer](https://scrutinizer-ci.com/g/Rias500/craft-notifications/badges/quality-score.png?b=master)
 
 # Notifications plugin for Craft CMS 3.x
 
