@@ -49,23 +49,12 @@ class SendNotification extends BaseJob
      */
     public function execute($queue)
     {
-        /* @var ElementInterface $elementType */
-        $elementType = new $this->notificationSettings['elementType'];
+        /* @var Notification $notification */
+        $notification = $this->notificationSettings['notification'];
 
-        // Create the query
-        $query = $elementType->find();
-        $query->limit = null;
-        Craft::configure($query, $this->notificationSettings['criteria']);
-
-        // Make sure this entry adheres to the criteria
-        if (in_array($this->event->sender->id, $query->ids())) {
-            /* @var Notification $notification */
-            $notification = $this->notificationSettings['notification'];
-            Notifications::$plugin->notificationsService->send(
-                new $notification($this->event->sender),
-                $this->event
-            );
-        }
+        Notifications::$plugin->notificationsService->send(
+            new $notification($this->event)
+        );
     }
 
     // Protected Methods

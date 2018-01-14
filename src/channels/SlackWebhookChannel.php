@@ -43,7 +43,7 @@ class SlackWebhookChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        $message = $notification->toSlack($notification);
+        $message = $notification->toSlack();
 
         $this->http->post($notifiable, $this->buildJsonPayload($message));
     }

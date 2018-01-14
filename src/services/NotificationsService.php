@@ -86,11 +86,11 @@ class NotificationsService extends Component
      *
      * @return void
      */
-    public function send(Notification $notification, Event $event)
+    public function send(Notification $notification)
     {
         $original = clone $notification;
 
-        foreach ($notification->via($event) as $channel => $notifiables) {
+        foreach ($notification->via() as $channel => $notifiables) {
             $notifiables = $this->formatNotifiables($notifiables);
 
             foreach ($notifiables as $notifiable) {
@@ -120,24 +120,13 @@ class NotificationsService extends Component
     }
 
     /**
-     * Get all database notifications
-     *
-     * @return array
-     */
-    public function getAll()
-    {
-        $notifications = NotificationsRecord::find()->all();
-        return $this->formatNotificationData($notifications);
-    }
-
-    /**
      * Get all notifications for a certain User
      *
      * @param User $user
      *
      * @return array
      */
-    public function getAllFor(User $user = null)
+    public function getAll(User $user = null)
     {
         // If there's no passed user, get the current logged in user
         if (is_null($user)) {
@@ -154,24 +143,13 @@ class NotificationsService extends Component
     }
 
     /**
-     * Get all unread database notifications
-     *
-     * @return array
-     */
-    public function getAllUnread()
-    {
-        $notifications = NotificationsRecord::find()->where(['read_at' => null])->all();
-        return $this->formatNotificationData($notifications);
-    }
-
-    /**
      * Get all unread notifications for a certain User
      *
      * @param User $user
      *
      * @return array
      */
-    public function getUnreadFor(User $user = null)
+    public function getAllUnread(User $user = null)
     {
         // If there's no passed user, get the current logged in user
         if (is_null($user)) {

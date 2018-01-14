@@ -33,16 +33,28 @@ class NotificationsVariable
     // =========================================================================
 
     /**
-     * Return all notifications
+     * @param null $user
      *
      * @return array
      */
-    public function getAllUnread()
+    public function all($user = null)
     {
-        return Notifications::$plugin->notificationsService->getAllUnread();
+        return Notifications::$plugin->notificationsService->getAll($user);
     }
 
-    public function markAsRead($notification)
+    /**
+     * Return all unread notifications
+     *
+     * @param null $user
+     *
+     * @return array
+     */
+    public function unread($user = null)
+    {
+        return Notifications::$plugin->notificationsService->getAllUnread($user);
+    }
+
+    public function markAsRead($notification = null)
     {
         return Notifications::$plugin->notificationsService->markAsRead($notification);
     }

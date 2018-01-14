@@ -11,10 +11,12 @@
 namespace rias\notifications;
 
 use craft\base\ElementInterface;
+use rias\notifications\events\RegisterChannelsEvent;
 use rias\notifications\jobs\SendNotification;
 use rias\notifications\models\Notification;
 use rias\notifications\models\Settings;
 use rias\notifications\services\NotificationsService as NotificationsServiceService;
+use rias\notifications\services\NotificationsService;
 use rias\notifications\variables\NotificationsVariable;
 
 use Craft;
@@ -93,7 +95,7 @@ class Notifications extends Plugin
         // Register the events for each Notification that's configured
         foreach ($this->settings->notifications as $notificationSettings) {
             Event::on(
-                $notificationSettings['elementType'],
+                $notificationSettings['class'],
                 $notificationSettings['event'],
                 function (Event $event) use ($notificationSettings) {
                     // Create a queue job to send the notification if the notification should be queued
@@ -104,6 +106,18 @@ class Notifications extends Plugin
                 }
             );
         }
+
+        Event::on(
+            NotificationsService::class,
+            NotificationsService::EVENT_REGISTER_CHANNELS,
+            function (RegisterChannelsEvent $event) {
+                $event->channels[] = [
+                    'custom-channel' => function () {
+                        return new CustomChannel();
+                    },
+                ];
+            }
+        );
     }
 
     // Protected Methods

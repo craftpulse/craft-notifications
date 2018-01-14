@@ -44,13 +44,13 @@ class Notification
     public $id;
 
     /**
-     * @var ElementInterface
+     * @var Event
      */
-    public $element = null;
+    public $event = null;
 
-    public function __construct($element)
+    public function __construct($event = null)
     {
-        $this->element = $element;
+        $this->event = $event;
     }
 
     /**
@@ -64,11 +64,9 @@ class Notification
      *     'mail' => 'info@example.com',
      * ];
      *
-     * @param Event $event
-     *
      * @return array
      */
-    public function via(Event $event)
+    public function via()
     {
         return [];
     }
