@@ -77,7 +77,6 @@ class MakeController extends Controller
 
         // Make sure the directory exists
         $dir = CRAFT_BASE_PATH . '/notifications';
-        echo $dir;
         if (! is_dir($dir)) {
             FileHelper::createDirectory($dir);
         }
