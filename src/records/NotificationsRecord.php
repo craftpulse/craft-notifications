@@ -31,6 +31,13 @@ use craft\db\ActiveRecord;
  * @author    Rias
  * @package   Notifications
  * @since     1.0.0
+ *
+ * @property string $uid
+ * @property int    $notifiable
+ * @property string $type
+ * @property string $data
+ * @property mixed $read_at
+ *
  */
 class NotificationsRecord extends ActiveRecord
 {
