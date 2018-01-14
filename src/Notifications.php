@@ -10,11 +10,8 @@
 
 namespace rias\notifications;
 
-use rias\notifications\events\RegisterChannelsEvent;
 use rias\notifications\jobs\SendNotification;
-use rias\notifications\models\Notification;
 use rias\notifications\models\Settings;
-use rias\notifications\services\NotificationsService;
 use rias\notifications\variables\NotificationsVariable;
 use Craft;
 use craft\base\Plugin;
