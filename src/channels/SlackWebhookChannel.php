@@ -28,7 +28,6 @@ class SlackWebhookChannel
      * Create a new Slack channel instance.
      *
      * @param  \GuzzleHttp\Client  $http
-     * @return void
      */
     public function __construct(HttpClient $http)
     {

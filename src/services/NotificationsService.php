@@ -125,13 +125,11 @@ class NotificationsService extends Component
     public function getAll(User $user = null)
     {
         // If there's no passed user, get the current logged in user
-        if (is_null($user)) {
-            $user = Craft::$app->getUser();
-        }
+        $user = $user ?? Craft::$app->getUser();
 
         if ($user) {
             $notifications = NotificationsRecord::find()->where(['notifiable' => $user->id])->all();
-            return $this->formatNotificationData($notifications);
+            return $this->formatNotificationData($notifications)->toArray();
         }
 
         // No notifications when we don't have a passed in or logged in user
@@ -148,13 +146,11 @@ class NotificationsService extends Component
     public function getAllUnread(User $user = null)
     {
         // If there's no passed user, get the current logged in user
-        if (is_null($user)) {
-            $user = Craft::$app->getUser();
-        }
+        $user = $user ?? Craft::$app->getUser();
 
         if ($user) {
             $notifications = NotificationsRecord::find()->where(['notifiable' => $user->id, 'read_at' => null])->all();
-            return $this->formatNotificationData($notifications);
+            return $this->formatNotificationData($notifications)->toArray();
         }
 
         // No notifications when we don't have a passed in or logged in user
