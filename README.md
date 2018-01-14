@@ -3,7 +3,7 @@
 [![Latest Version](https://img.shields.io/github/release/rias500/craft-notifications.svg?style=flat-square)](https://github.com/rias500/craft-notifications/releases)
 [![Quality Score](https://img.shields.io/scrutinizer/g/rias500/craft-notifications.svg?style=flat-square)](https://scrutinizer-ci.com/g/rias500/craft-notifications)
 [![StyleCI](https://styleci.io/repos/117422620/shield)](https://styleci.io/repos/117422620)
-[![Total Downloads](https://img.shields.io/packagist/dt/rias500/craft-notifications.svg?style=flat-square)](https://packagist.org/packages/rias500/craft-notifications)
+[![Total Downloads](https://img.shields.io/packagist/dt/rias/craft-notifications.svg?style=flat-square)](https://packagist.org/packages/rias500/craft-notifications)
 
 # Notifications plugin for Craft CMS 3.x
 
