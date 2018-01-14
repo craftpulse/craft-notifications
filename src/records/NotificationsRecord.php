@@ -34,9 +34,9 @@ use craft\db\ActiveRecord;
  */
 class NotificationsRecord extends ActiveRecord
 {
-     /**
-     * @return string the table name
-     */
+    /**
+    * @return string the table name
+    */
     public static function tableName()
     {
         return '{{%notifications_notifications}}';
