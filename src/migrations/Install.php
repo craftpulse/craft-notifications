@@ -95,7 +95,7 @@ class Install extends Migration
     {
         $tablesCreated = false;
 
-    // notifications_notifications table
+        // notifications_notifications table
         $tableSchema = Craft::$app->db->schema->getTableSchema('{{%notifications_notifications}}');
         if ($tableSchema === null) {
             $tablesCreated = true;
@@ -124,7 +124,7 @@ class Install extends Migration
      */
     protected function addForeignKeys()
     {
-    // notifications_notifications table
+        // notifications_notifications table
         $this->addForeignKey(
             $this->db->getForeignKeyName('{{%notifications_notifications}}', 'notifiable'),
             '{{%notifications_notifications}}',
@@ -143,7 +143,7 @@ class Install extends Migration
      */
     protected function removeTables()
     {
-    // notifications_notifications table
+        // notifications_notifications table
         $this->dropTableIfExists('{{%notifications_notifications}}');
     }
 }
