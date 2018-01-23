@@ -105,7 +105,7 @@ class Install extends Migration
                     'id' => $this->primaryKey(),
                     'uid' => $this->uid(),
                     'type' => $this->string(255)->notNull(),
-                    'notifiable' => $this->integer()->unsigned()->notNull(),
+                    'notifiable' => $this->integer()->notNull(),
                     'data' => $this->text()->notNull(),
                     'read_at' => $this->timestamp()->null(),
                     'dateCreated' => $this->dateTime()->notNull(),
