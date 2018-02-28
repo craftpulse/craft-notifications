@@ -11,6 +11,7 @@
 namespace rias\notifications;
 
 use rias\notifications\jobs\SendNotification;
+use rias\notifications\models\Notification;
 use rias\notifications\models\Settings;
 use rias\notifications\variables\NotificationsVariable;
 use Craft;
@@ -18,6 +19,7 @@ use craft\base\Plugin;
 use craft\console\Application as ConsoleApplication;
 use craft\web\twig\variables\CraftVariable;
 use yii\base\Event;
+use yii\queue\serializers\PhpSerializer;
 
 /**
  * Craft plugins are very much like little applications in and of themselves. We’ve made
@@ -89,11 +91,24 @@ class Notifications extends Plugin
                 $notificationSettings['class'],
                 $notificationSettings['event'],
                 function (Event $event) use ($notificationSettings) {
-                    // Create a queue job to send the notification if the notification should be queued
-                    Craft::$app->queue->push(new SendNotification([
-                        'notificationSettings' => $notificationSettings,
-                        'event' => $event,
-                    ]));
+                    try {
+                        // Make sure the event can be serialized
+                        $serializer = new PhpSerializer();
+                        $serializer->serialize($event);
+
+                        // Create a queue job to send the notification if the notification should be queued
+                        Craft::$app->queue->push(new SendNotification([
+                            'notificationSettings' => $notificationSettings,
+                            'event' => $event,
+                        ]));
+                    } catch (\Exception $e) { // Don't queue the notification if it cannot be serialized
+                        /* @var Notification $notification */
+                        $notification = $notificationSettings['notification'];
+
+                        Notifications::$plugin->notificationsService->send(
+                            new $notification($event)
+                        );
+                    }
                 }
             );
         }
