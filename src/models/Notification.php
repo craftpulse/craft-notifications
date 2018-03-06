@@ -38,6 +38,22 @@ class Notification extends Model
     public $event = null;
 
     /**
+     * Constructor
+     *
+     * @param mixed $config
+     */
+    public function __construct($config)
+    {
+        if ($config instanceof Event) {
+            Craft::$app->getDeprecator()->log('Notification::__construct()', 'Passing a yii\base\Event to Notification::__construct() has been deprecated. Pass a config array with a “event” value instead.');
+
+            $config = ['event' => $config];
+        }
+
+        parent::__construct($config);
+    }
+
+    /**
      * The via function determines which channels will be used to send the notification to.
      * Each channel consists of the name as the key and the receiver(s) as the value in
      * the format that the channel expects.
