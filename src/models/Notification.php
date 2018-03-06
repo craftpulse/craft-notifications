@@ -23,7 +23,7 @@ use yii\base\Event;
  * @package   Notifications
  * @since     1.0.0
  */
-class Notification
+class Notification extends Model
 {
     /**
      * The unique identifier for the notification.
@@ -36,11 +36,6 @@ class Notification
      * @var Event
      */
     public $event = null;
-
-    public function __construct($event = null)
-    {
-        $this->event = $event;
-    }
 
     /**
      * The via function determines which channels will be used to send the notification to.
