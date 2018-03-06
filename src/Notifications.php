@@ -106,7 +106,7 @@ class Notifications extends Plugin
                         $notification = $notificationSettings['notification'];
 
                         Notifications::$plugin->notificationsService->send(
-                            new $notification($event)
+                            new $notification(['event' => $event])
                         );
                     }
                 }

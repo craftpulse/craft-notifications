@@ -23,7 +23,7 @@ use yii\base\Event;
  * @package   Notifications
  * @since     1.0.0
  */
-class Notification
+class Notification extends Model
 {
     /**
      * The unique identifier for the notification.
@@ -37,9 +37,20 @@ class Notification
      */
     public $event = null;
 
-    public function __construct($event = null)
+    /**
+     * Constructor
+     *
+     * @param mixed $config
+     */
+    public function __construct($config)
     {
-        $this->event = $event;
+        if ($config instanceof Event) {
+            Craft::$app->getDeprecator()->log('Notification::__construct()', 'Passing a yii\base\Event to Notification::__construct() has been deprecated. Pass a config array with a “event” value instead.');
+
+            $config = ['event' => $config];
+        }
+
+        parent::__construct($config);
     }
 
     /**

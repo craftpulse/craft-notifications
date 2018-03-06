@@ -53,7 +53,7 @@ class SendNotification extends BaseJob
         $notification = $this->notificationSettings['notification'];
 
         Notifications::$plugin->notificationsService->send(
-            new $notification($this->event)
+            new $notification(['event' => $this->event])
         );
     }
 
