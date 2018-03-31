@@ -470,3 +470,8 @@ class InvoicePaid extends Notification
 The functionality of adding a channel is very easily extracted to a plugin, if you implement a custom one, please consider sharing them with the community. 
 
 Brought to you by [Rias](https://rias.be)
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/Rias500/craft-notifications/badge.svg?style=beer-square)](https://beerpay.io/Rias500/craft-notifications)  [![Beerpay](https://beerpay.io/Rias500/craft-notifications/make-wish.svg?style=flat-square)](https://beerpay.io/Rias500/craft-notifications?focus=wish)
