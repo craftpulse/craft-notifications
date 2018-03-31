@@ -24,6 +24,12 @@ Send notifications across a variety of delivery channels, including mail and Sla
 1. [Notification events](#notification-events)
 1. [Custom channels](#custom-channels)
 
+## Support Open Source. Buy beer.
+
+This plugin is licensed under a MIT license, which means that it's completely free open source software, and you can use it for whatever and however you wish. If you're using it and want to support the development, buy me a beer over at Beerpay!
+
+[![Beerpay](https://beerpay.io/Rias500/craft-notifications/badge.svg?style=beer-square)](https://beerpay.io/Rias500/craft-notifications)
+
 ## Requirements
 
 This plugin requires Craft CMS 3.0.0-beta.23 or later.
@@ -470,8 +476,3 @@ class InvoicePaid extends Notification
 The functionality of adding a channel is very easily extracted to a plugin, if you implement a custom one, please consider sharing them with the community. 
 
 Brought to you by [Rias](https://rias.be)
-
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/Rias500/craft-notifications/badge.svg?style=beer-square)](https://beerpay.io/Rias500/craft-notifications)  [![Beerpay](https://beerpay.io/Rias500/craft-notifications/make-wish.svg?style=flat-square)](https://beerpay.io/Rias500/craft-notifications?focus=wish)
