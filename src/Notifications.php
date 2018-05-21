@@ -19,7 +19,6 @@ use craft\base\Plugin;
 use craft\console\Application as ConsoleApplication;
 use craft\web\twig\variables\CraftVariable;
 use yii\base\Event;
-use yii\queue\serializers\PhpSerializer;
 
 /**
  * Craft plugins are very much like little applications in and of themselves. We’ve made
@@ -91,24 +90,12 @@ class Notifications extends Plugin
                 $notificationSettings['class'],
                 $notificationSettings['event'],
                 function (Event $event) use ($notificationSettings) {
-                    try {
-                        // Make sure the event can be serialized
-                        $serializer = new PhpSerializer();
-                        $serializer->serialize($event);
+                    /* @var Notification $notification */
+                    $notification = $notificationSettings['notification'];
 
-                        // Create a queue job to send the notification if the notification should be queued
-                        Craft::$app->queue->push(new SendNotification([
-                            'notificationSettings' => $notificationSettings,
-                            'event' => $event,
-                        ]));
-                    } catch (\Exception $e) { // Don't queue the notification if it cannot be serialized
-                        /* @var Notification $notification */
-                        $notification = $notificationSettings['notification'];
-
-                        Notifications::$plugin->notificationsService->send(
-                            new $notification(['event' => $event])
-                        );
-                    }
+                    Notifications::$plugin->notificationsService->send(
+                        new $notification(['event' => $event])
+                    );
                 }
             );
         }
