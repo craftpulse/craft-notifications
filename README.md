@@ -193,7 +193,7 @@ return [
 
 If a notification supports being sent as an email, you should define a `toMail` method on the notification class. This method will receive a `$notifiable` object that contains everything you defined in your `via` method.
 
-The `toMail` function should return a `craft\mail\Message` instance. Let's take a look at an example toMail method:
+The `toMail` function should return a `craft\mail\Message` instance. You may also return an array of `craft\mail\Message` instances if you wish to send multiple emails. Let's take a look at an example toMail method:
 
 ```php
 public function toMail($notifiable)
