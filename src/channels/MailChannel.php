@@ -25,12 +25,15 @@ class MailChannel
      */
     public function send(string $notifiable, Notification $notification)
     {
-        $message = $notification->toMail($notifiable);
+        $channelResult = $notification->toMail($notifiable);
+        $messages = is_array($channelResult) ? $channelResult : [$channelResult];
 
-        if (! $message instanceof Message) {
-            throw new \Exception("Message needs to be an instance of craft\mail\Message");
+        foreach ($messages as $message) {
+            if (! $message instanceof Message) {
+                throw new \Exception("Message needs to be an instance of craft\mail\Message");
+            }
+
+            $message->send();
         }
-
-        $message->send();
     }
 }
