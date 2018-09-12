@@ -358,7 +358,7 @@ public function toSlack($notifiable)
 ```
 
 ## Notification Events
-When a notification is sent, there's no events that get triggered, the `NotificationsService::EVENT_BEFORE_SEND` and `NotificationsService::EVENT_AFTER_SEND` which send a `rias\notifications\events\SendEvent` event.
+When a notification is sent, there are two events that get triggered, the `NotificationsService::EVENT_BEFORE_SEND` and `NotificationsService::EVENT_AFTER_SEND` which send a `rias\notifications\events\SendEvent` event.
 
 The `sendEvent` contains the following properties:
 
