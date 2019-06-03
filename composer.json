@@ -25,7 +25,7 @@
         "craftcms/cms": "^3.0.0-RC1",
         "ramsey/uuid": "^3.7",
         "guzzlehttp/guzzle": "^6.3",
-        "nesbot/carbon": "^1.22",
+        "nesbot/carbon": "^2.19",
         "tightenco/collect": "^5.5"
     },
     "autoload": {
