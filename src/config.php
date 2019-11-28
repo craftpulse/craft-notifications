@@ -6,7 +6,7 @@ return [
      * every time a blogpost is added, your notifications array could look like this:
     * 'notifications' => [
     *     [
-    *         'elementType' => \craft\elements\Entry::class,
+    *         'class' => \craft\elements\Entry::class,
     *         'event' => \craft\elements\Entry::EVENT_AFTER_SAVE,
     *         'criteria' => [
     *             'section' => 'blog'
