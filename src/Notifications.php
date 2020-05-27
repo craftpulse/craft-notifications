@@ -4,16 +4,16 @@
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://rias.be
- * @copyright Copyright (c) 2018 Rias
+ * @link      https://percipio.london
+ * @copyright Copyright (c) 2020 Percipio Global Ltd
  */
 
-namespace rias\notifications;
+namespace percipioglobal\notifications;
 
-use rias\notifications\jobs\SendNotification;
-use rias\notifications\models\Notification;
-use rias\notifications\models\Settings;
-use rias\notifications\variables\NotificationsVariable;
+use percipioglobal\notifications\jobs\SendNotification;
+use percipioglobal\notifications\models\Notification;
+use percipioglobal\notifications\models\Settings;
+use percipioglobal\notifications\variables\NotificationsVariable;
 use Craft;
 use craft\base\Plugin;
 use craft\console\Application as ConsoleApplication;
@@ -30,7 +30,7 @@ use yii\base\Event;
  *
  * https://craftcms.com/docs/plugins/introduction
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  *
@@ -70,7 +70,7 @@ class Notifications extends Plugin
 
         // Add in our console commands
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'rias\notifications\console\controllers';
+            $this->controllerNamespace = 'percipioglobal\notifications\console\controllers';
         }
 
         // Register our variables

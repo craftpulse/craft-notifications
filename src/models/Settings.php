@@ -1,6 +1,6 @@
 <?php
 
-namespace rias\notifications\models;
+namespace percipioglobal\notifications\models;
 
 use craft\base\Model;
 

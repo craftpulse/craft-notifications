@@ -1,13 +1,13 @@
 <?php
 
-namespace rias\notifications\events;
+namespace percipioglobal\notifications\events;
 
 use yii\base\Event;
 
 /**
  * RegisterChannelsEvent class.
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

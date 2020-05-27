@@ -4,11 +4,11 @@
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://rias.be
- * @copyright Copyright (c) 2018 Rias
+ * @link      https://percipio.london
+ * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace rias\notifications\console\controllers;
+namespace percipioglobal\notifications\console\controllers;
 
 use craft\helpers\FileHelper;
 use League\Flysystem\Adapter\Local;
@@ -39,7 +39,7 @@ use yii\console\Controller;
  *
  * ./craft notifications/default/do-something
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */
@@ -94,7 +94,7 @@ class MakeController extends Controller
      */
     protected function getStub()
     {
-        return Craft::$app->path->getVendorPath() . '/rias/craft-notifications/src/notification.stub';
+        return Craft::$app->path->getVendorPath() . '/percipioglobal/craft-notifications/src/notification.stub';
     }
 
     /**

@@ -1,13 +1,13 @@
 <?php
 
-namespace rias\notifications\messages;
+namespace percipioglobal\notifications\messages;
 
 use Closure;
 
 /**
  * Class SlackMessage
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

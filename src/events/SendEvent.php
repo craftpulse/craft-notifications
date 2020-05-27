@@ -4,15 +4,15 @@
  * @copyright Copyright (c) Pixel & Tonic, Inc.
  * @license   MIT
  */
-namespace rias\notifications\events;
+namespace percipioglobal\notifications\events;
 
-use rias\notifications\records\NotificationsRecord;
+use percipioglobal\notifications\records\NotificationsRecord;
 use yii\base\Event;
 
 /**
  * Class SendEvent
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

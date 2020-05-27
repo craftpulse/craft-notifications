@@ -1,16 +1,16 @@
 <?php
 
-namespace rias\notifications\channels;
+namespace percipioglobal\notifications\channels;
 
 use craft\base\ElementInterface;
-use rias\notifications\models\Notification;
-use rias\notifications\records\NotificationsRecord;
+use percipioglobal\notifications\models\Notification;
+use percipioglobal\notifications\records\NotificationsRecord;
 use RuntimeException;
 
 /**
  * Class DatabaseChannel
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

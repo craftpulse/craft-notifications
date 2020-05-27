@@ -1,13 +1,13 @@
 <?php
 
-namespace rias\notifications\messages;
+namespace percipioglobal\notifications\messages;
 
 use Carbon\Carbon;
 
 /**
  * Class SlackAttachment
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

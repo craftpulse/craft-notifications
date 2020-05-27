@@ -8,21 +8,21 @@
  * @copyright Copyright (c) 2018 Rias
  */
 
-namespace rias\notifications\services;
+namespace percipioglobal\notifications\services;
 
 use craft\elements\User;
 use craft\helpers\DateTimeHelper;
 use GuzzleHttp\Client as HttpClient;
 use Ramsey\Uuid\Uuid;
-use rias\notifications\channels\DatabaseChannel;
-use rias\notifications\channels\MailChannel;
-use rias\notifications\channels\SlackWebhookChannel;
-use rias\notifications\events\RegisterChannelsEvent;
-use rias\notifications\events\SendEvent;
+use percipioglobal\notifications\channels\DatabaseChannel;
+use percipioglobal\notifications\channels\MailChannel;
+use percipioglobal\notifications\channels\SlackWebhookChannel;
+use percipioglobal\notifications\events\RegisterChannelsEvent;
+use percipioglobal\notifications\events\SendEvent;
 use Craft;
 use craft\base\Component;
-use rias\notifications\models\Notification;
-use rias\notifications\records\NotificationsRecord;
+use percipioglobal\notifications\models\Notification;
+use percipioglobal\notifications\records\NotificationsRecord;
 use yii\base\Event;
 use yii\base\InvalidCallException;
 
@@ -35,7 +35,7 @@ use yii\base\InvalidCallException;
  *
  * https://craftcms.com/docs/plugins/services
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

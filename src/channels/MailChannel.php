@@ -1,14 +1,14 @@
 <?php
 
-namespace rias\notifications\channels;
+namespace percipioglobal\notifications\channels;
 
 use craft\mail\Message;
-use rias\notifications\models\Notification;
+use percipioglobal\notifications\models\Notification;
 
 /**
  * Class MailChannel
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

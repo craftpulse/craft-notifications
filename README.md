@@ -1,10 +1,5 @@
 ![icon](./src/icon.svg)
 
-[![Latest Version](https://img.shields.io/github/release/rias500/craft-notifications.svg?style=flat-square)](https://github.com/rias500/craft-notifications/releases)
-[![Quality Score](https://img.shields.io/scrutinizer/g/rias500/craft-notifications.svg?style=flat-square)](https://scrutinizer-ci.com/g/rias500/craft-notifications)
-[![StyleCI](https://styleci.io/repos/117422620/shield)](https://styleci.io/repos/117422620)
-[![Total Downloads](https://img.shields.io/packagist/dt/rias/craft-notifications.svg?style=flat-square)](https://packagist.org/packages/rias/craft-notifications)
-
 # Notifications plugin for Craft CMS 3.x
 
 Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
@@ -28,11 +23,9 @@ Send notifications across a variety of delivery channels, including mail and Sla
 
 This plugin is licensed under a MIT license, which means that it's completely free open source software, and you can use it for whatever and however you wish. If you're using it and want to support the development, buy me a beer over at Beerpay!
 
-[![Beerpay](https://beerpay.io/Rias500/craft-notifications/badge.svg?style=beer-square)](https://beerpay.io/Rias500/craft-notifications)
-
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.1.0 or later.
 
 ## Installation
 
@@ -44,7 +37,7 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require rias/craft-notifications
+        composer require percipioglobal/craft-notifications
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Notifications.
 
@@ -59,7 +52,6 @@ To install the plugin, follow these instructions.
     }
 },
 ```
-
 
 ## Introduction
 
@@ -107,7 +99,7 @@ public function via()
 
     if ($entry->section->handle === 'blog' && !$this->event->isNew) {
         return [
-            'database' => Craft::$app->getUsers()->getUserByUsernameOrEmail('hello@rias.be'),
+            'database' => Craft::$app->getUsers()->getUserByUsernameOrEmail('hello@percipio.london'),
         ];
     }
 
@@ -121,7 +113,7 @@ We know the event is an `ElementEvent`, which contains the `sender` and an `isNe
 From a plugin, you can use the `notificationsService` to send you own notifications.
 
 ```php
-use rias\notifications\Notifications; 
+use percipioglobal\notifications\Notifications; 
 use app\notifications\BlogPostAdded; 
  
 Notifications::getInstance()->notificationsService->send(new BlogPostAdded());
@@ -132,7 +124,7 @@ To save a notification in the database for later retrieval, make sure your `via`
 
 ```php
 return [
-    'database' => Craft::$app->getUsers()->getUserByUsernameOrEmail('hello@rias.be'),
+    'database' => Craft::$app->getUsers()->getUserByUsernameOrEmail('hello@percipio.london'),
 ];
 ```
 When using the `database` notification channel, your Notification class should define a `toDatabase` or `toArray` function.
@@ -158,7 +150,7 @@ Let's see how we can loop over the notifications, this automatically uses the cu
 
 You can also retrieve the notifications through the `notificationsService`
 ```php
-use rias\notifications\Notifications; 
+use percipioglobal\notifications\Notifications; 
 
 // All unread notifications
 Notifications::getInstance()->notificationsService->getAllUnread();
@@ -177,7 +169,7 @@ To mark notifications as read, we can use the Twig variable or the `notification
 ```
 
 ```php
-use rias\notifications\Notifications; 
+use percipioglobal\notifications\Notifications; 
 
 Notifications::getInstance()->notificationsService->markAsRead($notification);
 ```
@@ -187,7 +179,7 @@ To configure a notification to be sent as an email, make sure your `via` method 
 
 ```php
 return [
-    'mail' => 'hello@rias.be',
+    'mail' => 'hello@percipio.london',
 ];
 ```
 
@@ -224,7 +216,7 @@ return [
 The implementation and documentation are mostly based on [Laravel Notifications](https://laravel.com/docs/5.5/notifications).
 
 ### Formatting Slack notifications
-If a notification supports being sent as a Slack message, you should define a `toSlack` method on the notification class. This method should return a `rias\notifications\messages\SlackMessage` instance. Slack messages may contain text content as well as an "attachment" that formats additional text or an array of fields. Let's take a look at a basic `toSlack` example:
+If a notification supports being sent as a Slack message, you should define a `toSlack` method on the notification class. This method should return a `percipioglobal\notifications\messages\SlackMessage` instance. Slack messages may contain text content as well as an "attachment" that formats additional text or an array of fields. Let's take a look at a basic `toSlack` example:
 
 ```php
 /**
@@ -358,7 +350,7 @@ public function toSlack($notifiable)
 ```
 
 ## Notification Events
-When a notification is sent, there are two events that get triggered, the `NotificationsService::EVENT_BEFORE_SEND` and `NotificationsService::EVENT_AFTER_SEND` which send a `rias\notifications\events\SendEvent` event.
+When a notification is sent, there are two events that get triggered, the `NotificationsService::EVENT_BEFORE_SEND` and `NotificationsService::EVENT_AFTER_SEND` which send a `percipioglobal\notifications\events\SendEvent` event.
 
 The `sendEvent` contains the following properties:
 
@@ -414,7 +406,7 @@ Your `VoiceChannel` class would then look like this:
 
 namespace app\channels;
 
-use rias\notifications\models\Notification;
+use percipioglobal\notifications\models\Notification;
 
 class VoiceChannel
 {
@@ -422,7 +414,7 @@ class VoiceChannel
      * Send the given notification.
      *
      * @param  mixed  $notifiable
-     * @param  \rias\notifications\models\Notification  $notification
+     * @param  \percipioglobal\notifications\models\Notification  $notification
      * @return void
      */
     public function send($notifiable, Notification $notification)
@@ -441,7 +433,7 @@ namespace App\Notifications;
 
 use app\channels\VoiceChannel;
 use app\channels\messages\VoiceMessage;
-use rias\notifications\models\Notification;
+use percipioglobal\notifications\models\Notification;
 
 class InvoicePaid extends Notification
 {
@@ -475,4 +467,4 @@ class InvoicePaid extends Notification
 
 The functionality of adding a channel is very easily extracted to a plugin, if you implement a custom one, please consider sharing them with the community. 
 
-Brought to you by [Rias](https://rias.be)
+Brought to you by [Percipio Global Ltd.](https://percipio.london)

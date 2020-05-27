@@ -4,14 +4,14 @@
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://rias.be
- * @copyright Copyright (c) 2018 Rias
+ * @link      https://percipio.london
+ * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace rias\notifications\variables;
+namespace percipioglobal\notifications\variables;
 
 use craft\elements\User;
-use rias\notifications\Notifications;
+use percipioglobal\notifications\Notifications;
 
 use Craft;
 
@@ -23,7 +23,7 @@ use Craft;
  *
  * https://craftcms.com/docs/plugins/variables
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */

@@ -4,13 +4,13 @@
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://rias.be
- * @copyright Copyright (c) 2018 Rias
+ * @link      https://percipio.london
+ * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace rias\notifications\migrations;
+namespace percipioglobal\notifications\migrations;
 
-use rias\notifications\Notifications;
+use percipioglobal\notifications\Notifications;
 
 use Craft;
 use craft\config\DbConfig;
@@ -26,7 +26,7 @@ use craft\db\Migration;
  * If you need to perform any additional actions on install/uninstall, override the
  * safeUp() and safeDown() methods.
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */
