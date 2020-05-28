@@ -11,7 +11,7 @@ use percipioglobal\notifications\messages\SlackAttachmentField;
 /**
  * Class SlackWebhookChannel
  *
- * @author    Rias
+ * @author    Percipio Global Ltd.
  * @package   Notifications
  * @since     1.0.0
  */
