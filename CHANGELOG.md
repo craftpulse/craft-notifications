@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.1.6 - 2022-02-25
+### Added
+- Added a `notifications/remove-notifications/index --time="-3 months"` to remove read notifications within a given PHP strtotime expiration date. If no time provided, it defaults to -1 month. Issue [Question: Removing DB entries? #69](https://github.com/percipioglobal/craft-notifications/issues/69#issuecomment-1050330598) was opened by @rtgoodwin, code provided by @codyjames
+
 ## 1.1.5 - 2022-01-17
 ### Changed
 - Updated dependencies

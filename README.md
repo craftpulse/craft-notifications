@@ -10,6 +10,7 @@ Send notifications across a variety of delivery channels, including mail and Sla
 1. [Database notifications](#database-notifications)
     1. [Retrieving notifications](#retrieving-notifications)
     1. [Marking notifications as read](#marking-notifications-as-read)
+1. [Delete notifications](#delete-notifications)
 1. [Mail notifications](#mail-notifications)
 1. [Slack notifications](#slack-notifications)
     1. [Formatting slack notifications](#formatting-slack-notifications)
@@ -173,6 +174,11 @@ use percipioglobal\notifications\Notifications;
 
 Notifications::getInstance()->notificationsService->markAsRead($notification);
 ```
+
+## Delete read notifications
+To keep your database clean and lean, you can delete the read notifications older than a given time frame. The default time is set to `-1 month`. If you want a custom time frame, provide the date within the [strtotime](https://www.php.net/manual/en/function.strtotime.php) PHP restrictions.
+
+```./craft notifications/remove-notifications/index --time="-3 months"```
 
 ## Mail notifications
 To configure a notification to be sent as an email, make sure your `via` method on the Notification class returns a key with `mail`:
