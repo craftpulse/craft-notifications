@@ -1,4 +1,4 @@
-![icon](./src/icon.svg)
+![icon](./resources/img/banner.png)
 
 # Notifications plugin for Craft CMS 3.x
 
