@@ -161,7 +161,7 @@ Notifications::getInstance()->notificationsService->getAll();
 ```
 
 ### Marking notifications as read
-To mark notifications as read, we can use the Twig variable or the `notificationsService` as well
+To mark notifications as read, we can use the Twig variable or the `notificationsService` as well. This function expects an array of notifications.
 
 ```twig
   {% for notification in craft.notifications.unread %}
