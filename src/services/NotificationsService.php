@@ -14,7 +14,6 @@ use craft\elements\User;
 use craft\helpers\DateTimeHelper;
 use craft\helpers\StringHelper;
 use GuzzleHttp\Client as HttpClient;
-use Ramsey\Uuid\Uuid;
 use percipioglobal\notifications\channels\DatabaseChannel;
 use percipioglobal\notifications\channels\MailChannel;
 use percipioglobal\notifications\channels\SlackWebhookChannel;
