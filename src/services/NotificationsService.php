@@ -12,8 +12,8 @@ namespace percipioglobal\notifications\services;
 
 use craft\elements\User;
 use craft\helpers\DateTimeHelper;
+use craft\helpers\StringHelper;
 use GuzzleHttp\Client as HttpClient;
-use Ramsey\Uuid\Uuid;
 use percipioglobal\notifications\channels\DatabaseChannel;
 use percipioglobal\notifications\channels\MailChannel;
 use percipioglobal\notifications\channels\SlackWebhookChannel;
@@ -90,7 +90,7 @@ class NotificationsService extends Component
             $notifiables = $this->formatNotifiables($notifiables);
 
             foreach ($notifiables as $notifiable) {
-                $notificationId = Uuid::uuid4()->toString();
+                $notificationId = StringHelper::UUID();
                 $notification = clone $original;
 
                 if (! $notification->id) {
