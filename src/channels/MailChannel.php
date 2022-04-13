@@ -1,9 +1,9 @@
 <?php
 
-namespace percipioglobal\notifications\channels;
+namespace percipiolondon\notifications\channels;
 
 use craft\mail\Message;
-use percipioglobal\notifications\models\Notification;
+use percipiolondon\notifications\models\Notification;
 
 /**
  * Class MailChannel

@@ -13,7 +13,6 @@ namespace percipiolondon\notifications\models;
 use Craft;
 use craft\base\Model;
 
-use percipiolondon\notifications\Notifications;
 use yii\base\Event;
 
 /**
@@ -42,12 +41,7 @@ class Notification extends Model
      */
     public function __construct($config)
     {
-        if ($config instanceof Event) {
-            Craft::$app->getDeprecator()->log('Notification::__construct()', 'Passing a yii\base\Event to Notification::__construct() has been deprecated. Pass a config array with a “event” value instead.');
-
-            $config = ['event' => $config];
-        }
-
+        $config = ['event' => $config];
         parent::__construct($config);
     }
 
@@ -64,7 +58,7 @@ class Notification extends Model
      *
      * @return array
      */
-    public function via()
+    public function via(): array
     {
         return [];
     }

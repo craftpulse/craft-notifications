@@ -1,12 +1,12 @@
 <?php
 
-namespace percipioglobal\notifications\channels;
+namespace percipiolondon\notifications\channels;
 
 use GuzzleHttp\Client as HttpClient;
-use percipioglobal\notifications\messages\SlackAttachment;
-use percipioglobal\notifications\messages\SlackAttachmentField;
-use percipioglobal\notifications\messages\SlackMessage;
-use percipioglobal\notifications\models\Notification;
+use percipiolondon\notifications\messages\SlackAttachment;
+use percipiolondon\notifications\messages\SlackAttachmentField;
+use percipiolondon\notifications\messages\SlackMessage;
+use percipiolondon\notifications\models\Notification;
 
 /**
  * Class SlackWebhookChannel

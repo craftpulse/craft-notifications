@@ -102,7 +102,7 @@ class Notifications extends Plugin
 
     // Protected Methods
     // =========================================================================
-    protected function createSettingsModel()
+    protected function createSettingsModel(): Settings
     {
         return new Settings();
     }
