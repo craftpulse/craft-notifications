@@ -10,8 +10,6 @@
 
 namespace percipiolondon\notifications\variables;
 
-use Craft;
-
 use percipiolondon\notifications\Notifications;
 
 /**
@@ -48,7 +46,7 @@ class NotificationsVariable
      *
      * @return array
      */
-    public function unread($user = null)
+    public function unread($user = null): array
     {
         return Notifications::$plugin->notificationsService->getAllUnread($user);
     }

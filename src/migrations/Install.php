@@ -52,7 +52,7 @@ class Install extends Migration
      * @return boolean return a false value to indicate the migration fails
      * and should not proceed further. All other return values mean the migration succeeds.
      */
-    public function safeUp()
+    public function safeUp(): bool
     {
         $this->driver = Craft::$app->getConfig()->getDb()->driver;
         if ($this->createTables()) {
@@ -74,7 +74,7 @@ class Install extends Migration
      * @return boolean return a false value to indicate the migration fails
      * and should not proceed further. All other return values mean the migration succeeds.
      */
-    public function safeDown()
+    public function safeDown(): bool
     {
         $this->driver = Craft::$app->getConfig()->getDb()->driver;
         $this->removeTables();
@@ -90,7 +90,7 @@ class Install extends Migration
      *
      * @return bool
      */
-    protected function createTables()
+    protected function createTables(): bool
     {
         $tablesCreated = false;
 
@@ -121,7 +121,7 @@ class Install extends Migration
      *
      * @return void
      */
-    protected function addForeignKeys()
+    protected function addForeignKeys(): void
     {
         // notifications_notifications table
         $this->addForeignKey(
@@ -140,7 +140,7 @@ class Install extends Migration
      *
      * @return void
      */
-    protected function removeTables()
+    protected function removeTables(): void
     {
         // notifications_notifications table
         $this->dropTableIfExists('{{%notifications_notifications}}');

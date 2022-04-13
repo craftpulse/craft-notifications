@@ -40,7 +40,7 @@ class SlackWebhookChannel
      * @param  mixed  $notifiable
      * @param  Notification  $notification
      */
-    public function send($notifiable, Notification $notification)
+    public function send(mixed $notifiable, Notification $notification): void
     {
         $message = $notification->toSlack();
 

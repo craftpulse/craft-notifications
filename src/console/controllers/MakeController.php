@@ -12,8 +12,9 @@ namespace percipiolondon\notifications\console\controllers;
 
 use Craft;
 
-use craft\helpers\Console;
 use craft\helpers\FileHelper;
+use yii\base\ErrorException;
+use yii\base\Exception;
 use yii\base\Module;
 use yii\console\Controller;
 
@@ -51,7 +52,6 @@ class MakeController extends Controller
         parent::__construct($id, $module, $config);
     }
 
-
     /**
      * Handle notifications/default console commands
      *
@@ -60,11 +60,11 @@ class MakeController extends Controller
      *
      * @param string $name
      *
-     * @return mixed
-     * @throws \yii\base\Exception
-     * @throws \yii\base\ErrorException
+     * @return bool
+     * @throws Exception
+     * @throws ErrorException
      */
-    public function actionIndex($name)
+    public function actionIndex(string $name): bool
     {
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
@@ -83,15 +83,17 @@ class MakeController extends Controller
         FileHelper::writeToFile($dir . "/{$name}.php", $this->buildClass($name));
 
         $this->stdout("Notification created successfully.");
+
+        return true;
     }
 
     /**
      * Get the stub file for the generator.
      *
      * @return string
-     * @throws \yii\base\Exception
+     * @throws Exception
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         return Craft::$app->path->getVendorPath() . '/percipiolondon/craft-notifications/src/notification.stub';
     }
@@ -99,10 +101,10 @@ class MakeController extends Controller
     /**
      * Determine if the class already exists.
      *
-     * @param  string  $rawName
+     * @param string $rawName
      * @return bool
      */
-    protected function alreadyExists($rawName)
+    protected function alreadyExists(string $rawName): bool
     {
         return file_exists(CRAFT_BASE_PATH . "/notifications/{$rawName}.php");
     }
@@ -113,7 +115,7 @@ class MakeController extends Controller
      * @param  string $name
      *
      * @return string
-     * @throws \yii\base\Exception
+     * @throws Exception
      */
     protected function buildClass($name)
     {

@@ -17,6 +17,7 @@ use craft\web\twig\variables\CraftVariable;
 use percipiolondon\notifications\models\Notification;
 use percipiolondon\notifications\models\Settings;
 use percipiolondon\notifications\variables\NotificationsVariable;
+use percipiolondon\notifications\services\NotificationsService;
 use yii\base\Event;
 
 /**
@@ -46,7 +47,7 @@ class Notifications extends Plugin
      *
      * @var Notifications
      */
-    public static $plugin;
+    public static Notifications $plugin;
 
     // Public Methods
     // =========================================================================
@@ -62,7 +63,7 @@ class Notifications extends Plugin
      * you do not need to load it in your init() method.
      *
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;

@@ -14,8 +14,12 @@ use Craft;
 use craft\base\Component;
 use craft\elements\User;
 use craft\helpers\DateTimeHelper;
+use craft\helpers\Json;
 use craft\helpers\StringHelper;
 use GuzzleHttp\Client as HttpClient;
+use Illuminate\Support\Collection;
+use JetBrains\PhpStorm\ArrayShape;
+use JetBrains\PhpStorm\Pure;
 use percipiolondon\notifications\channels\DatabaseChannel;
 use percipiolondon\notifications\channels\MailChannel;
 use percipiolondon\notifications\channels\SlackWebhookChannel;
@@ -44,24 +48,24 @@ class NotificationsService extends Component
     /**
      * @event SubmissionEvent The event that is triggered before a notification is sent
      */
-    const EVENT_BEFORE_SEND = 'beforeSend';
+    public const EVENT_BEFORE_SEND = 'beforeSend';
 
     /**
      * @event SubmissionEvent The event that is triggered after a notification is sent
      */
-    const EVENT_AFTER_SEND = 'afterSend';
+    public const EVENT_AFTER_SEND = 'afterSend';
 
     /**
      * @event RegisterChannelsEvent An event to register new channels into the notificationsService
      */
-    const EVENT_REGISTER_CHANNELS = 'registerChannels';
+    public const EVENT_REGISTER_CHANNELS = 'registerChannels';
 
     // Public Methods
     // =========================================================================
     /**
      * @inheritdoc
      */
-    public static function channels()
+    public static function channels(): array
     {
         $channels = static::defineChannels();
 
@@ -118,11 +122,11 @@ class NotificationsService extends Component
     /**
      * Get all notifications for a certain User
      *
-     * @param User $user
+     * @param User|null $user
      *
      * @return array
      */
-    public function getAll(User $user = null)
+    public function getAll(?User $user = null): array
     {
         // If there's no passed user, get the current logged in user
         $user = $user ?? Craft::$app->getUser();
@@ -139,11 +143,11 @@ class NotificationsService extends Component
     /**
      * Get all unread notifications for a certain User
      *
-     * @param User $user
+     * @param User|null $user
      *
      * @return array
      */
-    public function getAllUnread(User $user = null)
+    public function getAllUnread(User $user = null): array
     {
         // If there's no passed user, get the current logged in user
         $user = $user ?? Craft::$app->getUser();
@@ -189,12 +193,12 @@ class NotificationsService extends Component
      *
      * @param $notifications
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    protected function formatNotificationData($notifications)
+    protected function formatNotificationData($notifications): Collection
     {
         return collect($notifications)->map(function($notification) {
-            $notification->data = json_decode($notification->data);
+            $notification->data = Json::decode($notification->data);
             return $notification;
         });
     }
@@ -203,11 +207,11 @@ class NotificationsService extends Component
      * Determines if the notification can be sent.
      *
      * @param  mixed  $notifiable
-     * @param  Notification  $notification
-     * @param  string  $channel
+     * @param Notification $notification
+     * @param string $channel
      * @return bool
      */
-    protected function shouldSendNotification($notifiable, $notification, $channel)
+    protected function shouldSendNotification(mixed $notifiable, Notification $notification, string $channel): bool
     {
         $event = new SendEvent([
             'notification' => $notification,
@@ -226,7 +230,7 @@ class NotificationsService extends Component
      * @param  mixed  $notifiables
      * @return array
      */
-    protected function formatNotifiables($notifiables)
+    protected function formatNotifiables(mixed $notifiables): array
     {
         // Notifiables can be an anonymous function that returns an array
         if (is_callable($notifiables)) {
@@ -247,7 +251,7 @@ class NotificationsService extends Component
      * @return array The available channels.
      * @see channels()
      */
-    protected static function defineChannels()
+    protected static function defineChannels(): array
     {
         return [
             'database' => function() {
@@ -265,10 +269,10 @@ class NotificationsService extends Component
     /**
      * Get a channel instance.
      *
-     * @param  string|null  $name
+     * @param string|null $name
      * @return mixed
      */
-    protected function channel($name = null)
+    protected function channel(?string $name = null): mixed
     {
         if (!isset(self::channels()[$name])) {
             throw new InvalidCallException("No channel {$name} exists.");
@@ -282,7 +286,7 @@ class NotificationsService extends Component
      *
      * @return DatabaseChannel
      */
-    protected static function createDatabaseChannel()
+    protected static function createDatabaseChannel(): DatabaseChannel
     {
         return new DatabaseChannel();
     }
@@ -292,7 +296,7 @@ class NotificationsService extends Component
      *
      * @return SlackWebhookChannel
      */
-    protected static function createSlackChannel()
+    protected static function createSlackChannel(): SlackWebhookChannel
     {
         return new SlackWebhookChannel(new HttpClient());
     }
@@ -302,7 +306,7 @@ class NotificationsService extends Component
      *
      * @return MailChannel
      */
-    protected static function createMailChannel()
+    protected static function createMailChannel(): MailChannel
     {
         return new MailChannel();
     }
