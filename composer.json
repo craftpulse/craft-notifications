@@ -8,9 +8,12 @@
         "cms",
         "craftcms",
         "craft-plugin",
-        "notifications"
+        "notifications",
+        "slack",
+        "email"
     ],
     "support": {
+        "email": "support@percipio.london",
         "docs": "https://github.com/percipioglobal/craft-notifications/blob/master/README.md",
         "issues": "https://github.com/percipioglobal/craft-notifications/issues"
     },
@@ -24,6 +27,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
+        "php": "^8.0.2",
         "craftcms/cms": "^4.0.0-beta.1",
         "guzzlehttp/guzzle": "^7.0",
         "nesbot/carbon": "^2.19",
@@ -37,9 +41,6 @@
             "percipiolondon\\notifications\\": "src/"
         }
     },
-    "scripts": {
-        "phpstan": "phpstan --memory-limit=1G"
-    },
     "extra": {
         "name": "Notifications",
         "handle": "notifications",
@@ -51,5 +52,14 @@
             "notificationsService": "percipiolondon\\notifications\\services\\NotificationsService"
         },
         "class": "percipiolondon\\notifications\\Notifications"
+    },
+    "scripts": {
+        "phpstan": "phpstan --memory-limit=1G"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
     }
 }
