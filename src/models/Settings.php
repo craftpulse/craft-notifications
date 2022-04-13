@@ -1,6 +1,6 @@
 <?php
 
-namespace percipioglobal\notifications\models;
+namespace percipiolondon\notifications\models;
 
 use craft\base\Model;
 

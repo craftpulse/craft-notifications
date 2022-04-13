@@ -1,5 +1,5 @@
 {
-    "name": "percipioglobal/craft-notifications",
+    "name": "percipiolondon/craft-notifications",
     "description": "Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.",
     "type": "craft-plugin",
     "version": "1.2.2",
@@ -21,16 +21,24 @@
             "homepage": "https://percipio.london"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "craftcms/cms": "^3.2.0",
         "guzzlehttp/guzzle": "^7.0",
         "nesbot/carbon": "^2.19",
         "tightenco/collect": "^5.5"
     },
+    "require-dev": {
+        "craftcms/phpstan": "dev-main"
+    },
     "autoload": {
         "psr-4": {
-            "percipioglobal\\notifications\\": "src/"
+            "percipiolondon\\notifications\\": "src/"
         }
+    },
+    "scripts": {
+        "phpstan": "phpstan --memory-limit=1G"
     },
     "extra": {
         "name": "Notifications",
@@ -40,8 +48,8 @@
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/percipioglobal/craft-notifications/master/CHANGELOG.md",
         "components": {
-            "notificationsService": "percipioglobal\\notifications\\services\\NotificationsService"
+            "notificationsService": "percipiolondon\\notifications\\services\\NotificationsService"
         },
-        "class": "percipioglobal\\notifications\\Notifications"
+        "class": "percipiolondon\\notifications\\Notifications"
     }
 }

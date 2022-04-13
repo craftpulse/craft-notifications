@@ -8,21 +8,21 @@
  * @copyright Copyright (c) 2018 Rias
  */
 
-namespace percipioglobal\notifications\services;
+namespace percipiolondon\notifications\services;
 
+use Craft;
+use craft\base\Component;
 use craft\elements\User;
 use craft\helpers\DateTimeHelper;
 use craft\helpers\StringHelper;
 use GuzzleHttp\Client as HttpClient;
-use percipioglobal\notifications\channels\DatabaseChannel;
-use percipioglobal\notifications\channels\MailChannel;
-use percipioglobal\notifications\channels\SlackWebhookChannel;
-use percipioglobal\notifications\events\RegisterChannelsEvent;
-use percipioglobal\notifications\events\SendEvent;
-use Craft;
-use craft\base\Component;
-use percipioglobal\notifications\models\Notification;
-use percipioglobal\notifications\records\NotificationsRecord;
+use percipiolondon\notifications\channels\DatabaseChannel;
+use percipiolondon\notifications\channels\MailChannel;
+use percipiolondon\notifications\channels\SlackWebhookChannel;
+use percipiolondon\notifications\events\RegisterChannelsEvent;
+use percipiolondon\notifications\events\SendEvent;
+use percipiolondon\notifications\models\Notification;
+use percipiolondon\notifications\records\NotificationsRecord;
 use yii\base\Event;
 use yii\base\InvalidCallException;
 
@@ -67,7 +67,7 @@ class NotificationsService extends Component
 
         // Give plugins a chance to modify them
         $event = new RegisterChannelsEvent([
-            'channels' => $channels
+            'channels' => $channels,
         ]);
         Event::trigger(static::class, self::EVENT_REGISTER_CHANNELS, $event);
 
@@ -93,11 +93,11 @@ class NotificationsService extends Component
                 $notificationId = StringHelper::UUID();
                 $notification = clone $original;
 
-                if (! $notification->id) {
+                if (!$notification->id) {
                     $notification->id = $notificationId;
                 }
 
-                if (! $this->shouldSendNotification($notifiable, $notification, $channel)) {
+                if (!$this->shouldSendNotification($notifiable, $notification, $channel)) {
                     continue;
                 }
 
@@ -173,12 +173,12 @@ class NotificationsService extends Component
         // Make sure we have a collection to loop over
         $notifications = collect($notifications);
 
-        $notificationIds = $notifications->map(function ($notification) {
+        $notificationIds = $notifications->map(function($notification) {
             return is_object($notification) ? $notification->id : $notification;
         });
 
         // Update the read notifications
-        if (! is_null($notificationIds)) {
+        if (!is_null($notificationIds)) {
             $now = DateTimeHelper::currentUTCDateTime()->format('Y-m-d H:i:s');
             NotificationsRecord::updateAll(['read_at' => $now], ['id' => $notificationIds]);
         }
@@ -193,7 +193,7 @@ class NotificationsService extends Component
      */
     protected function formatNotificationData($notifications)
     {
-        return collect($notifications)->map(function ($notification) {
+        return collect($notifications)->map(function($notification) {
             $notification->data = json_decode($notification->data);
             return $notification;
         });
@@ -234,7 +234,7 @@ class NotificationsService extends Component
         }
 
         // Always make sure we have an array
-        if (! is_array($notifiables)) {
+        if (!is_array($notifiables)) {
             return [$notifiables];
         }
 
@@ -250,13 +250,13 @@ class NotificationsService extends Component
     protected static function defineChannels()
     {
         return [
-            'database' => function () {
+            'database' => function() {
                 return self::createDatabaseChannel();
             },
-            'mail' => function () {
+            'mail' => function() {
                 return self::createMailChannel();
             },
-            'slack' => function () {
+            'slack' => function() {
                 return self::createSlackChannel();
             },
         ];

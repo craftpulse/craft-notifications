@@ -3,10 +3,10 @@
 namespace percipioglobal\notifications\channels;
 
 use GuzzleHttp\Client as HttpClient;
-use percipioglobal\notifications\models\Notification;
-use percipioglobal\notifications\messages\SlackMessage;
 use percipioglobal\notifications\messages\SlackAttachment;
 use percipioglobal\notifications\messages\SlackAttachmentField;
+use percipioglobal\notifications\messages\SlackMessage;
+use percipioglobal\notifications\models\Notification;
 
 /**
  * Class SlackWebhookChannel
@@ -77,7 +77,7 @@ class SlackWebhookChannel
      */
     protected function attachments(SlackMessage $message)
     {
-        return collect($message->attachments)->map(function ($attachment) use ($message) {
+        return collect($message->attachments)->map(function($attachment) use ($message) {
             return array_filter([
                 'color' => $attachment->color ?: $message->color(),
                 'title' => $attachment->title,
@@ -101,7 +101,7 @@ class SlackWebhookChannel
      */
     protected function fields(SlackAttachment $attachment)
     {
-        return collect($attachment->fields)->map(function ($value, $key) {
+        return collect($attachment->fields)->map(function($value, $key) {
             if ($value instanceof SlackAttachmentField) {
                 return $value->toArray();
             }

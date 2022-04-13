@@ -1,6 +1,6 @@
 <?php
 
-namespace percipioglobal\notifications\messages;
+namespace percipiolondon\notifications\messages;
 
 /**
  * Class SlackAttachmentField

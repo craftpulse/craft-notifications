@@ -8,14 +8,12 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace percipioglobal\notifications\models;
-
-use craft\base\ElementInterface;
-use craft\base\Model;
-use percipioglobal\notifications\Notifications;
+namespace percipiolondon\notifications\models;
 
 use Craft;
-use craft\db\ActiveRecord;
+use craft\base\Model;
+
+use percipiolondon\notifications\Notifications;
 use yii\base\Event;
 
 /**

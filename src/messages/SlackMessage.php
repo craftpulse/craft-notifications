@@ -1,6 +1,6 @@
 <?php
 
-namespace percipioglobal\notifications\messages;
+namespace percipiolondon\notifications\messages;
 
 use Closure;
 
@@ -109,7 +109,7 @@ class SlackMessage
     {
         $this->username = $username;
 
-        if (! is_null($icon)) {
+        if (!is_null($icon)) {
             $this->icon = $icon;
         }
 
@@ -150,7 +150,7 @@ class SlackMessage
      */
     public function attachment(Closure $callback)
     {
-        $this->attachments[] = $attachment = new SlackAttachment;
+        $this->attachments[] = $attachment = new SlackAttachment();
 
         $callback($attachment);
 

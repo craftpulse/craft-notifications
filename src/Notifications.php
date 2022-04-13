@@ -8,16 +8,15 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd
  */
 
-namespace percipioglobal\notifications;
+namespace percipiolondon\notifications;
 
-use percipioglobal\notifications\jobs\SendNotification;
-use percipioglobal\notifications\models\Notification;
-use percipioglobal\notifications\models\Settings;
-use percipioglobal\notifications\variables\NotificationsVariable;
 use Craft;
 use craft\base\Plugin;
 use craft\console\Application as ConsoleApplication;
 use craft\web\twig\variables\CraftVariable;
+use percipiolondon\notifications\models\Notification;
+use percipiolondon\notifications\models\Settings;
+use percipiolondon\notifications\variables\NotificationsVariable;
 use yii\base\Event;
 
 /**
@@ -70,14 +69,14 @@ class Notifications extends Plugin
 
         // Add in our console commands
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'percipioglobal\notifications\console\controllers';
+            $this->controllerNamespace = 'percipiolondon\notifications\console\controllers';
         }
 
         // Register our variables
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('notifications', NotificationsVariable::class);
@@ -89,7 +88,7 @@ class Notifications extends Plugin
             Event::on(
                 $notificationSettings['class'],
                 $notificationSettings['event'],
-                function (Event $event) use ($notificationSettings) {
+                function(Event $event) use ($notificationSettings) {
                     /* @var Notification $notification */
                     $notification = $notificationSettings['notification'];
 

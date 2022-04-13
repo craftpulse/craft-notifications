@@ -29,7 +29,7 @@ class MailChannel
         $messages = is_array($channelResult) ? $channelResult : [$channelResult];
 
         foreach ($messages as $message) {
-            if (! $message instanceof Message) {
+            if (!$message instanceof Message) {
                 throw new \Exception("Message needs to be an instance of craft\mail\Message");
             }
 

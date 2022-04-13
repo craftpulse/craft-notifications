@@ -8,13 +8,12 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace percipioglobal\notifications\records;
+namespace percipiolondon\notifications\records;
 
-use craft\records\User;
-use percipioglobal\notifications\Notifications;
-
-use Craft;
 use craft\db\ActiveRecord;
+use craft\records\User;
+
+use percipiolondon\notifications\Notifications;
 
 /**
  * Notification Record

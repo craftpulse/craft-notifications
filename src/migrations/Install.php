@@ -8,13 +8,12 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace percipioglobal\notifications\migrations;
-
-use percipioglobal\notifications\Notifications;
+namespace percipiolondon\notifications\migrations;
 
 use Craft;
-use craft\config\DbConfig;
+
 use craft\db\Migration;
+use percipiolondon\notifications\Notifications;
 
 /**
  * Notifications Install Migration

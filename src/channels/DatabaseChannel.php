@@ -1,10 +1,10 @@
 <?php
 
-namespace percipioglobal\notifications\channels;
+namespace percipiolondon\notifications\channels;
 
 use craft\base\ElementInterface;
-use percipioglobal\notifications\models\Notification;
-use percipioglobal\notifications\records\NotificationsRecord;
+use percipiolondon\notifications\models\Notification;
+use percipiolondon\notifications\records\NotificationsRecord;
 use RuntimeException;
 
 /**

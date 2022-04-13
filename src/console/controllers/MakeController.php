@@ -8,13 +8,12 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace percipioglobal\notifications\console\controllers;
-
-use craft\helpers\FileHelper;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
+namespace percipiolondon\notifications\console\controllers;
 
 use Craft;
+
+use craft\helpers\Console;
+use craft\helpers\FileHelper;
 use yii\base\Module;
 use yii\console\Controller;
 
@@ -77,7 +76,7 @@ class MakeController extends Controller
 
         // Make sure the directory exists
         $dir = CRAFT_BASE_PATH . '/notifications';
-        if (! is_dir($dir)) {
+        if (!is_dir($dir)) {
             FileHelper::createDirectory($dir);
         }
 
@@ -94,7 +93,7 @@ class MakeController extends Controller
      */
     protected function getStub()
     {
-        return Craft::$app->path->getVendorPath() . '/percipioglobal/craft-notifications/src/notification.stub';
+        return Craft::$app->path->getVendorPath() . '/percipiolondon/craft-notifications/src/notification.stub';
     }
 
     /**

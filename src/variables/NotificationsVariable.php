@@ -8,12 +8,11 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace percipioglobal\notifications\variables;
-
-use craft\elements\User;
-use percipioglobal\notifications\Notifications;
+namespace percipiolondon\notifications\variables;
 
 use Craft;
+
+use percipiolondon\notifications\Notifications;
 
 /**
  * Notifications Variable
