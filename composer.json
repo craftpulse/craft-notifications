@@ -45,9 +45,10 @@
         "name": "Notifications",
         "handle": "notifications",
         "schemaVersion": "1.0.0",
-        "hasCpSettings": false,
-        "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/percipioglobal/craft-notifications/master/CHANGELOG.md",
+        "developer": "percipiolondon",
+        "developerUrl": "https://percipio.london",
+        "documentationUrl": "https://github.com/percipioglobal/craft-notifications/blob/v4/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/percipioglobal/craft-notifications/v4/CHANGELOG.md",
         "components": {
             "notificationsService": "percipiolondon\\notifications\\services\\NotificationsService"
         },
