@@ -174,12 +174,16 @@ class NotificationsService extends Component
             $notifications = NotificationsRecord::find()->where(['notifiable' => $user->getId()])->all();
         }
 
-        // Make sure we have a collection to loop over
-        $notifications = collect($notifications);
+        if(is_array($notifications)) {
+                // Make sure we have a collection to loop over
+            $notifications = collect($notifications);
 
-        $notificationIds = $notifications->map(function($notification) {
-            return is_object($notification) ? $notification->id : $notification;
-        });
+            $notificationIds = $notifications->map(function($notification) {
+                return is_object($notification) ? $notification->id : $notification;
+            });
+        } else {
+            $notificationIds = [$notifications->id];
+        }
 
         // Update the read notifications
         if (!is_null($notificationIds)) {

@@ -34,7 +34,9 @@ use yii\base\Event;
  * @package   Notifications
  * @since     1.0.0
  *
- * @property  NotificationsServiceService $notificationsService
+ * @property  NotificationsService $notificationsService
+ *
+ * @method Settings getSettings()
  */
 class Notifications extends Plugin
 {
@@ -94,7 +96,7 @@ class Notifications extends Plugin
                     $notification = $notificationSettings['notification'];
 
                     Notifications::$plugin->notificationsService->send(
-                        new $notification(['event' => $event])
+                        new $notification($event)
                     );
                 }
             );
