@@ -2,7 +2,7 @@
     "name": "percipiolondon/craft-notifications",
     "description": "Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.",
     "type": "craft-plugin",
-    "version": "4.0.0-RC1",
+    "version": "4.0.0",
     "keywords": [
         "craft",
         "cms",

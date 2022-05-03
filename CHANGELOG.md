@@ -4,10 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 4.0.0-RC1 - 2022-05-03
-### Fixed
-- Fixed the notification deletion (one vs array)
+## 4.0.0 - 2022-05-03
+- Official Craft 4 release
 
+## 4.0.0-RC1 - 2022-05-03
 ### Changed
 - Changed the namespace from percipioglobal to percipiolondon
 - Changed the service name in Notifcations.php
@@ -15,6 +15,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Removed the criteria from the config file
 - Updated PHPDocs
 - Added code improvements according to PHP8
+- 
+### Fixed
+- Fixed the notification deletion (one vs array)
 
 ## 1.2.2 - 2022-01-17
 ### Fixed
