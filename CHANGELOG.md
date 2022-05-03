@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.0-RC1 - 2022-05-03
+### Fixed
+- Fixed the notification deletion (one vs array)
+
+### Changed
+- Changed the namespace from percipioglobal to percipiolondon
+- Changed the service name in Notifcations.php
+- Passed the $event straight to the NotificationsService
+- Removed the criteria from the config file
+- Updated PHPDocs
+- Added code improvements according to PHP8
+
 ## 1.2.2 - 2022-01-17
 ### Fixed
 - Fixed the reference that was still on ramsey/uuid
