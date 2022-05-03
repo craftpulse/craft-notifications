@@ -1,12 +1,12 @@
 <?php
 
-namespace percipioglobal\notifications\console\controllers;
+namespace percipiolondon\notifications\console\controllers;
 
 use Craft;
 use craft\console\Controller;
 use craft\helpers\DateTimeHelper;
 use Exception;
-use percipioglobal\notifications\records\NotificationsRecord;
+use percipiolondon\notifications\records\NotificationsRecord;
 use yii\console\ExitCode;
 use yii\helpers\BaseConsole;
 
