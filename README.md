@@ -98,7 +98,7 @@ public function via()
 {
     $entry = $this->event->sender;
 
-    if ($entry->section->handle === 'blog' && !$this->event->isNew) {
+    if ($entry->section->handle === 'blog' && $this->event->isNew) {
         return [
             'database' => Craft::$app->getUsers()->getUserByUsernameOrEmail('hello@percipio.london'),
         ];
