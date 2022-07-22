@@ -156,6 +156,9 @@ use percipioglobal\notifications\Notifications;
 // All unread notifications
 Notifications::getInstance()->notificationsService->getAllUnread();
 
+// All read notifications
+Notifications::getInstance()->notificationsService->getAllRead();
+
 // All notifications
 Notifications::getInstance()->notificationsService->getAll();
 ```

@@ -161,6 +161,27 @@ class NotificationsService extends Component
         return [];
     }
 
+	/**
+	 * Get all read notifications for a certain User
+	 *
+	 * @param User|null $user
+	 *
+	 * @return array
+	 */
+	public function getAllRead(User $user = null): array
+	{
+		// If there's no passed user, get the current logged in user
+		$user = $user ?? Craft::$app->getUser();
+
+		if ($user) {
+			$notifications = NotificationsRecord::find()->where(['notifiable' => $user->id])->andWhere(['not', ['read_at' => null]])->all();
+			return $this->formatNotificationData($notifications)->toArray();
+		}
+
+		// No notifications when we don't have a passed in or logged in user
+		return [];
+	}
+
     /**
      * Mark a notification as read
      *
