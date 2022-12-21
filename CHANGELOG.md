@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.1.1 - 2022-12-21
+### Fix
+- Error running the make command wondering if it is related to the namespace change? #81 (thanks to [@laurabennet](https://github.com/laurabennett))
 
 ## 4.1.0 - 2022-12-21
 ### Added
