@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Changed
 - Update notification.stub #78 (thanks to [@frankkepler](https://github.com/frankkepler))
+- Updated dependencies
 
 ### Fix
 - Typed property error when using Slack attachments #80 (thanks to [@samput](https://github.com/samput))
