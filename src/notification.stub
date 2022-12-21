@@ -16,9 +16,10 @@ class DummyClass extends Notification
      *
      * @return void
      */
-    public function __construct($event = null)
+    public function __construct($config = [])
     {
-        parent::__construct($event);
+        $config = ['event' => $config];
+        parent::__construct($config);
     }
 
     /**
