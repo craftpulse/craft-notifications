@@ -95,7 +95,8 @@ class MakeController extends Controller
      */
     protected function getStub(): string
     {
-        return Craft::$app->path->getVendorPath() . '/percipiolondon/craft-notifications/src/notification.stub';
+        // return Craft::$app->path->getVendorPath() . '/percipioglobal/craft-notifications/src/notification.stub';
+        return dirname(dirname(__DIR__)) . '/notification.stub';
     }
 
     /**
