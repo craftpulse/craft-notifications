@@ -10,7 +10,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Add helper function to get all "read" notifications #79 (thanks to [@frankkepler](https://github.com/frankkepler))
 
 ### Changed
-- Update notification.stub #78 (thanks to [@frankkepler](https://github.com/frankkepler))
 - Updated dependencies
 
 ### Fix

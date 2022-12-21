@@ -30,8 +30,7 @@
         "php": "^8.0.2",
         "craftcms/cms": "^4.0.0-beta.1",
         "guzzlehttp/guzzle": "^7.0",
-        "nesbot/carbon": "^2.19",
-        "tightenco/collect": "^7.12"
+        "nesbot/carbon": "^2.19"
     },
     "require-dev": {
         "craftcms/phpstan": "dev-main"
