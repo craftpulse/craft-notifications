@@ -1,16 +1,19 @@
 {
-    "name": "percipioglobal/craft-notifications",
+    "name": "percipiolondon/craft-notifications",
     "description": "Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.",
     "type": "craft-plugin",
-    "version": "1.2.2",
+    "version": "4.1.2",
     "keywords": [
         "craft",
         "cms",
         "craftcms",
         "craft-plugin",
-        "notifications"
+        "notifications",
+        "slack",
+        "email"
     ],
     "support": {
+        "email": "support@percipio.london",
         "docs": "https://github.com/percipioglobal/craft-notifications/blob/master/README.md",
         "issues": "https://github.com/percipioglobal/craft-notifications/issues"
     },
@@ -21,27 +24,42 @@
             "homepage": "https://percipio.london"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "craftcms/cms": "^3.2.0",
+        "php": "^8.0.2",
+        "craftcms/cms": "^4.0.0-beta.1",
         "guzzlehttp/guzzle": "^7.0",
-        "nesbot/carbon": "^2.19",
-        "tightenco/collect": "^5.5"
+        "nesbot/carbon": "^2.19"
+    },
+    "require-dev": {
+        "craftcms/phpstan": "dev-main"
     },
     "autoload": {
         "psr-4": {
-            "percipioglobal\\notifications\\": "src/"
+            "percipiolondon\\notifications\\": "src/"
         }
     },
     "extra": {
         "name": "Notifications",
         "handle": "notifications",
         "schemaVersion": "1.0.0",
-        "hasCpSettings": false,
-        "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/percipioglobal/craft-notifications/master/CHANGELOG.md",
+        "developer": "percipiolondon",
+        "developerUrl": "https://percipio.london",
+        "documentationUrl": "https://github.com/percipioglobal/craft-notifications/blob/v4/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/percipioglobal/craft-notifications/v4/CHANGELOG.md",
         "components": {
-            "notificationsService": "percipioglobal\\notifications\\services\\NotificationsService"
+            "notificationsService": "percipiolondon\\notifications\\services\\NotificationsService"
         },
-        "class": "percipioglobal\\notifications\\Notifications"
+        "class": "percipiolondon\\notifications\\Notifications"
+    },
+    "scripts": {
+        "phpstan": "phpstan --memory-limit=1G"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
     }
 }

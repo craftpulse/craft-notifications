@@ -1,6 +1,6 @@
 <?php
 
-namespace percipioglobal\notifications\events;
+namespace percipiolondon\notifications\events;
 
 use yii\base\Event;
 

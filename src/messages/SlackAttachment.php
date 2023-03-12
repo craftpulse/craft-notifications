@@ -1,8 +1,9 @@
 <?php
 
-namespace percipioglobal\notifications\messages;
+namespace percipiolondon\notifications\messages;
 
 use Carbon\Carbon;
+use Closure;
 
 /**
  * Class SlackAttachment
@@ -18,79 +19,79 @@ class SlackAttachment
      *
      * @var string
      */
-    public $title;
+    public ?string $title = null;
 
     /**
      * The attachment's URL.
      *
      * @var string
      */
-    public $url;
+    public ?string $url = null;
 
     /**
      * The attachment's text content.
      *
      * @var string
      */
-    public $content;
+    public ?string $content = null;
 
     /**
      * A plain-text summary of the attachment.
      *
      * @var string
      */
-    public $fallback;
+    public ?string $fallback = null;
 
     /**
      * The attachment's color.
      *
      * @var string
      */
-    public $color;
+    public ?string $color = null;
 
     /**
      * The attachment's fields.
      *
      * @var array
      */
-    public $fields;
+    public ?array $fields = null;
 
     /**
      * The fields containing markdown.
      *
      * @var array
      */
-    public $markdown;
+    public ?array $markdown = null;
 
     /**
      * The attachment's footer.
      *
      * @var string
      */
-    public $footer;
+    public ?string $footer = null;
 
     /**
      * The attachment's footer icon.
      *
      * @var string
      */
-    public $footerIcon;
+    public ?string $footerIcon = null;
 
     /**
      * The attachment's timestamp.
      *
      * @var int
      */
-    public $timestamp;
+    public ?int $timestamp = null;
 
     /**
      * Set the title of the attachment.
      *
-     * @param  string  $title
-     * @param  string  $url
+     * @param string $title
+     * @param string|null $url
      * @return $this
      */
-    public function title($title, $url = null)
+    public function title(string $title, ?string $url = null): static
     {
         $this->title = $title;
         $this->url = $url;
@@ -101,10 +102,10 @@ class SlackAttachment
     /**
      * Set the content (text) of the attachment.
      *
-     * @param  string  $content
+     * @param string $content
      * @return $this
      */
-    public function content($content)
+    public function content(string $content): static
     {
         $this->content = $content;
 
@@ -114,10 +115,10 @@ class SlackAttachment
     /**
      * A plain-text summary of the attachment.
      *
-     * @param  string  $fallback
+     * @param string $fallback
      * @return $this
      */
-    public function fallback($fallback)
+    public function fallback(string $fallback): static
     {
         $this->fallback = $fallback;
 
@@ -127,10 +128,10 @@ class SlackAttachment
     /**
      * Set the color of the attachment.
      *
-     * @param  string  $color
+     * @param string $color
      * @return $this
      */
-    public function color($color)
+    public function color(string $color): static
     {
         $this->color = $color;
 
@@ -140,16 +141,16 @@ class SlackAttachment
     /**
      * Add a field to the attachment.
      *
-     * @param  \Closure|array $title
-     * @param  string $content
+     * @param array|Closure $title
+     * @param string $content
      * @return $this
      */
-    public function field($title, $content = '')
+    public function field(array|Closure $title, string $content = ''): static
     {
         if (is_callable($title)) {
             $callback = $title;
 
-            $callback($attachmentField = new SlackAttachmentField);
+            $callback($attachmentField = new SlackAttachmentField());
 
             $this->fields[] = $attachmentField;
 
@@ -167,7 +168,7 @@ class SlackAttachment
      * @param  array  $fields
      * @return $this
      */
-    public function fields(array $fields)
+    public function fields(array $fields): static
     {
         $this->fields = $fields;
 
@@ -180,7 +181,7 @@ class SlackAttachment
      * @param  array  $fields
      * @return $this
      */
-    public function markdown(array $fields)
+    public function markdown(array $fields): static
     {
         $this->markdown = $fields;
 
@@ -190,10 +191,10 @@ class SlackAttachment
     /**
      * Set the footer content.
      *
-     * @param  string  $footer
+     * @param string $footer
      * @return $this
      */
-    public function footer($footer)
+    public function footer(string $footer): static
     {
         $this->footer = $footer;
 
@@ -203,10 +204,10 @@ class SlackAttachment
     /**
      * Set the footer icon.
      *
-     * @param  string $icon
+     * @param string $icon
      * @return $this
      */
-    public function footerIcon($icon)
+    public function footerIcon(string $icon): static
     {
         $this->footerIcon = $icon;
 
@@ -219,7 +220,7 @@ class SlackAttachment
      * @param  Carbon  $timestamp
      * @return $this
      */
-    public function timestamp(Carbon $timestamp)
+    public function timestamp(Carbon $timestamp): static
     {
         $this->timestamp = $timestamp->getTimestamp();
 

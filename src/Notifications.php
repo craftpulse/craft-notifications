@@ -8,16 +8,16 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd
  */
 
-namespace percipioglobal\notifications;
+namespace percipiolondon\notifications;
 
-use percipioglobal\notifications\jobs\SendNotification;
-use percipioglobal\notifications\models\Notification;
-use percipioglobal\notifications\models\Settings;
-use percipioglobal\notifications\variables\NotificationsVariable;
 use Craft;
 use craft\base\Plugin;
 use craft\console\Application as ConsoleApplication;
 use craft\web\twig\variables\CraftVariable;
+use percipiolondon\notifications\models\Notification;
+use percipiolondon\notifications\models\Settings;
+use percipiolondon\notifications\variables\NotificationsVariable;
+use percipiolondon\notifications\services\NotificationsService;
 use yii\base\Event;
 
 /**
@@ -34,7 +34,9 @@ use yii\base\Event;
  * @package   Notifications
  * @since     1.0.0
  *
- * @property  NotificationsServiceService $notificationsService
+ * @property  NotificationsService $notificationsService
+ *
+ * @method Settings getSettings()
  */
 class Notifications extends Plugin
 {
@@ -47,7 +49,7 @@ class Notifications extends Plugin
      *
      * @var Notifications
      */
-    public static $plugin;
+    public static Notifications $plugin;
 
     // Public Methods
     // =========================================================================
@@ -63,21 +65,21 @@ class Notifications extends Plugin
      * you do not need to load it in your init() method.
      *
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
 
         // Add in our console commands
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'percipioglobal\notifications\console\controllers';
+            $this->controllerNamespace = 'percipiolondon\notifications\console\controllers';
         }
 
         // Register our variables
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('notifications', NotificationsVariable::class);
@@ -89,12 +91,12 @@ class Notifications extends Plugin
             Event::on(
                 $notificationSettings['class'],
                 $notificationSettings['event'],
-                function (Event $event) use ($notificationSettings) {
+                function(Event $event) use ($notificationSettings) {
                     /* @var Notification $notification */
                     $notification = $notificationSettings['notification'];
 
                     Notifications::$plugin->notificationsService->send(
-                        new $notification(['event' => $event])
+                        new $notification($event)
                     );
                 }
             );
@@ -103,7 +105,7 @@ class Notifications extends Plugin
 
     // Protected Methods
     // =========================================================================
-    protected function createSettingsModel()
+    protected function createSettingsModel(): Settings
     {
         return new Settings();
     }

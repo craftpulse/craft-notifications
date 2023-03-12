@@ -8,9 +8,6 @@ return [
     *     [
     *         'class' => \craft\elements\Entry::class,
     *         'event' => \craft\elements\Entry::EVENT_AFTER_SAVE,
-    *         'criteria' => [
-    *             'section' => 'blog'
-    *         ],
     *         'notification' => \app\notifications\BlogPostAdded::class,
     *     ],
     * ],

@@ -1,10 +1,11 @@
 <?php
 
-namespace percipioglobal\notifications\channels;
+namespace percipiolondon\notifications\channels;
 
 use craft\base\ElementInterface;
-use percipioglobal\notifications\models\Notification;
-use percipioglobal\notifications\records\NotificationsRecord;
+use craft\helpers\Json;
+use percipiolondon\notifications\models\Notification;
+use percipiolondon\notifications\records\NotificationsRecord;
 use RuntimeException;
 
 /**
@@ -16,13 +17,13 @@ use RuntimeException;
  */
 class DatabaseChannel
 {
-    public function send(ElementInterface $notifiable, Notification $notification)
+    public function send(ElementInterface $notifiable, Notification $notification): bool
     {
         $notificationsRecord = new NotificationsRecord();
         $notificationsRecord->uid = $notification->id;
         $notificationsRecord->notifiable = $notifiable->getId();
         $notificationsRecord->type = get_class($notification);
-        $notificationsRecord->data = json_encode($this->getData($notifiable, $notification));
+        $notificationsRecord->data = Json::encode($this->getData($notifiable, $notification));
         $notificationsRecord->read_at = null;
 
         return $notificationsRecord->save();
@@ -37,7 +38,7 @@ class DatabaseChannel
      *
      * @throws \RuntimeException
      */
-    protected function getData($notifiable, Notification $notification)
+    protected function getData(mixed $notifiable, Notification $notification): array
     {
         if (method_exists($notification, 'toDatabase')) {
             $data = $notification->toDatabase($notifiable);

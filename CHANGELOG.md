@@ -4,6 +4,39 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.1.2 - 2022-12-21
+### Fix
+- Update returnary type from the via method in the stub
+
+## 4.1.1 - 2022-12-21
+### Fix
+- Error running the make command wondering if it is related to the namespace change? #81 (thanks to [@laurabennet](https://github.com/laurabennett))
+
+## 4.1.0 - 2022-12-21
+### Added
+- Add helper function to get all "read" notifications #79 (thanks to [@frankkepler](https://github.com/frankkepler))
+
+### Changed
+- Updated dependencies
+
+### Fix
+- Typed property error when using Slack attachments #80 (thanks to [@samput](https://github.com/samput))
+
+## 4.0.0 - 2022-05-03
+- Official Craft 4 release
+
+## 4.0.0-RC1 - 2022-05-03
+### Changed
+- Changed the namespace from percipioglobal to percipiolondon
+- Changed the service name in Notifcations.php
+- Passed the $event straight to the NotificationsService
+- Removed the criteria from the config file
+- Updated PHPDocs
+- Added code improvements according to PHP8
+- 
+### Fixed
+- Fixed the notification deletion (one vs array)
+
 ## 1.2.2 - 2022-01-17
 ### Fixed
 - Fixed the reference that was still on ramsey/uuid

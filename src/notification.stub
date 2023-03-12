@@ -6,8 +6,8 @@ use Craft;
 use craft\elements\Entry;
 use craft\helpers\ArrayHelper;
 use craft\mail\Message;
-use percipioglobal\notifications\messages\SlackMessage;
-use percipioglobal\notifications\models\Notification;
+use percipiolondon\notifications\messages\SlackMessage;
+use percipiolondon\notifications\models\Notification;
 
 class DummyClass extends Notification
 {
@@ -26,7 +26,7 @@ class DummyClass extends Notification
      *
      * @return array
      */
-    public function via()
+    public function via(): array
     {
         return [];
     }

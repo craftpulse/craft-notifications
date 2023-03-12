@@ -1,19 +1,20 @@
 <?php
 
-namespace percipioglobal\notifications\console\controllers;
+namespace percipiolondon\notifications\console\controllers;
 
+use Craft;
 use craft\console\Controller;
 use craft\helpers\DateTimeHelper;
-
-use percipioglobal\notifications\records\NotificationsRecord;
-use Craft;
+use Exception;
+use percipiolondon\notifications\records\NotificationsRecord;
 use yii\console\ExitCode;
+use yii\helpers\BaseConsole;
 
 class RemoveNotificationsController extends Controller
 {
-    public $time = "-1 month";
+    public string $time = "-1 month";
 
-    public function options($actionID)
+    public function options(mixed $actionID): array
     {
         $options = parent::options($actionID);
         $options[] = 'time';
@@ -23,8 +24,10 @@ class RemoveNotificationsController extends Controller
 
     /**
      * Delete notifications older than a time indication which will be added in the strtotime PHP function - default -1 month
+     *
+     * @throws Exception
      */
-    public function actionIndex()
+    public function actionIndex(): int
     {
         $expiration = DateTimeHelper::toDateTime(strtotime($this->time))->format('Y-m-d H:i:s');
         $notifications = NotificationsRecord::find()
@@ -38,7 +41,7 @@ class RemoveNotificationsController extends Controller
             foreach ($notifications->all() as $notification) {
                 $this->stdout(" - Deleting notification {$notification->id} ... ");
                 $notification->delete();
-                $this->stdout('done' . PHP_EOL, Console::FG_GREEN);
+                $this->stdout('done' . PHP_EOL, BaseConsole::FG_GREEN);
             }
 
             Craft::warning('Notifications deleted: ' . $count, __METHOD__);

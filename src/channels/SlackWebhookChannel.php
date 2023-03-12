@@ -1,12 +1,12 @@
 <?php
 
-namespace percipioglobal\notifications\channels;
+namespace percipiolondon\notifications\channels;
 
 use GuzzleHttp\Client as HttpClient;
-use percipioglobal\notifications\models\Notification;
-use percipioglobal\notifications\messages\SlackMessage;
-use percipioglobal\notifications\messages\SlackAttachment;
-use percipioglobal\notifications\messages\SlackAttachmentField;
+use percipiolondon\notifications\messages\SlackAttachment;
+use percipiolondon\notifications\messages\SlackAttachmentField;
+use percipiolondon\notifications\messages\SlackMessage;
+use percipiolondon\notifications\models\Notification;
 
 /**
  * Class SlackWebhookChannel
@@ -40,7 +40,7 @@ class SlackWebhookChannel
      * @param  mixed  $notifiable
      * @param  Notification  $notification
      */
-    public function send($notifiable, Notification $notification)
+    public function send(mixed $notifiable, Notification $notification): void
     {
         $message = $notification->toSlack();
 
@@ -53,7 +53,7 @@ class SlackWebhookChannel
      * @param  SlackMessage  $message
      * @return array
      */
-    protected function buildJsonPayload(SlackMessage $message)
+    protected function buildJsonPayload(SlackMessage $message): array
     {
         $optionalFields = array_filter([
             'username' => data_get($message, 'username'),
@@ -75,9 +75,9 @@ class SlackWebhookChannel
      * @param  SlackMessage  $message
      * @return array
      */
-    protected function attachments(SlackMessage $message)
+    protected function attachments(SlackMessage $message): array
     {
-        return collect($message->attachments)->map(function ($attachment) use ($message) {
+        return collect($message->attachments)->map(function($attachment) use ($message) {
             return array_filter([
                 'color' => $attachment->color ?: $message->color(),
                 'title' => $attachment->title,
@@ -99,9 +99,9 @@ class SlackWebhookChannel
      * @param  SlackAttachment  $attachment
      * @return array
      */
-    protected function fields(SlackAttachment $attachment)
+    protected function fields(SlackAttachment $attachment): array
     {
-        return collect($attachment->fields)->map(function ($value, $key) {
+        return collect($attachment->fields)->map(function($value, $key) {
             if ($value instanceof SlackAttachmentField) {
                 return $value->toArray();
             }

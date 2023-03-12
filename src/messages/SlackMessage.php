@@ -1,6 +1,6 @@
 <?php
 
-namespace percipioglobal\notifications\messages;
+namespace percipiolondon\notifications\messages;
 
 use Closure;
 
@@ -18,56 +18,56 @@ class SlackMessage
      *
      * @var string
      */
-    public $level = 'info';
+    public string $level = 'info';
 
     /**
      * The username to send the message from.
      *
      * @var string|null
      */
-    public $username;
+    public ?string $username;
 
     /**
      * The user icon for the message.
      *
      * @var string|null
      */
-    public $icon;
+    public ?string $icon;
 
     /**
      * The channel to send the message on.
      *
      * @var string|null
      */
-    public $channel;
+    public ?string $channel;
 
     /**
      * The text content of the message.
      *
      * @var string
      */
-    public $content;
+    public string $content;
 
     /**
      * The message's attachments.
      *
      * @var array
      */
-    public $attachments = [];
+    public array $attachments = [];
 
     /**
      * Additional request options for the Guzzle HTTP client.
      *
      * @var array
      */
-    public $http = [];
+    public array $http = [];
 
     /**
      * Indicate that the notification gives information about a successful operation.
      *
      * @return $this
      */
-    public function success()
+    public function success(): static
     {
         $this->level = 'success';
 
@@ -79,7 +79,7 @@ class SlackMessage
      *
      * @return $this
      */
-    public function warning()
+    public function warning(): static
     {
         $this->level = 'warning';
 
@@ -91,7 +91,7 @@ class SlackMessage
      *
      * @return $this
      */
-    public function error()
+    public function error(): static
     {
         $this->level = 'error';
 
@@ -101,15 +101,15 @@ class SlackMessage
     /**
      * Set a custom user icon for the Slack message.
      *
-     * @param  string  $username
-     * @param  string|null  $icon
+     * @param string $username
+     * @param string|null $icon
      * @return $this
      */
-    public function from($username, $icon = null)
+    public function from(string $username, ?string $icon = null): static
     {
         $this->username = $username;
 
-        if (! is_null($icon)) {
+        if (!is_null($icon)) {
             $this->icon = $icon;
         }
 
@@ -119,10 +119,10 @@ class SlackMessage
     /**
      * Set the Slack channel the message should be sent to.
      *
-     * @param  string $channel
+     * @param string $channel
      * @return $this
      */
-    public function to($channel)
+    public function to(string $channel): static
     {
         $this->channel = $channel;
 
@@ -132,10 +132,10 @@ class SlackMessage
     /**
      * Set the content of the Slack message.
      *
-     * @param  string  $content
+     * @param string $content
      * @return $this
      */
-    public function content($content)
+    public function content(string $content): static
     {
         $this->content = $content;
 
@@ -145,12 +145,12 @@ class SlackMessage
     /**
      * Define an attachment for the message.
      *
-     * @param  \Closure  $callback
+     * @param Closure $callback
      * @return $this
      */
-    public function attachment(Closure $callback)
+    public function attachment(Closure $callback): static
     {
-        $this->attachments[] = $attachment = new SlackAttachment;
+        $this->attachments[] = $attachment = new SlackAttachment();
 
         $callback($attachment);
 
@@ -162,7 +162,7 @@ class SlackMessage
      *
      * @return string
      */
-    public function color()
+    public function color(): string
     {
         switch ($this->level) {
             case 'success':
@@ -180,7 +180,7 @@ class SlackMessage
      * @param  array  $options
      * @return $this
      */
-    public function http(array $options)
+    public function http(array $options): static
     {
         $this->http = $options;
 

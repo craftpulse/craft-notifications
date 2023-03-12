@@ -8,12 +8,9 @@
  * @copyright Copyright (c) 2020 Percipio Global Ltd.
  */
 
-namespace percipioglobal\notifications\variables;
+namespace percipiolondon\notifications\variables;
 
-use craft\elements\User;
-use percipioglobal\notifications\Notifications;
-
-use Craft;
+use percipiolondon\notifications\Notifications;
 
 /**
  * Notifications Variable
@@ -49,10 +46,22 @@ class NotificationsVariable
      *
      * @return array
      */
-    public function unread($user = null)
+    public function unread($user = null): array
     {
         return Notifications::$plugin->notificationsService->getAllUnread($user);
     }
+
+	/**
+	 * Return all read notifications
+	 *
+	 * @param null $user
+	 *
+	 * @return array
+	 */
+	public function read($user = null): array
+	{
+		return Notifications::$plugin->notificationsService->getAllRead($user);
+	}
 
     public function markAsRead($notification = null)
     {

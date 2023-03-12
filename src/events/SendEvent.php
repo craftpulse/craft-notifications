@@ -4,9 +4,9 @@
  * @copyright Copyright (c) Pixel & Tonic, Inc.
  * @license   MIT
  */
-namespace percipioglobal\notifications\events;
+namespace percipiolondon\notifications\events;
 
-use percipioglobal\notifications\records\NotificationsRecord;
+use percipiolondon\notifications\records\NotificationsRecord;
 use yii\base\Event;
 
 /**

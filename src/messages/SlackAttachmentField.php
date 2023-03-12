@@ -1,6 +1,8 @@
 <?php
 
-namespace percipioglobal\notifications\messages;
+namespace percipiolondon\notifications\messages;
+
+use JetBrains\PhpStorm\ArrayShape;
 
 /**
  * Class SlackAttachmentField
@@ -16,29 +18,29 @@ class SlackAttachmentField
      *
      * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * The content of the attachment field.
      *
      * @var string
      */
-    protected $content;
+    protected string $content;
 
     /**
      * Whether the content is short.
      *
      * @var bool
      */
-    protected $short = true;
+    protected bool $short = true;
 
     /**
      * Set the title of the field.
      *
-     * @param  string $title
+     * @param string $title
      * @return $this
      */
-    public function title($title)
+    public function title(string $title): static
     {
         $this->title = $title;
 
@@ -48,10 +50,10 @@ class SlackAttachmentField
     /**
      * Set the content of the field.
      *
-     * @param  string $content
+     * @param string $content
      * @return $this
      */
-    public function content($content)
+    public function content(string $content): static
     {
         $this->content = $content;
 
@@ -63,7 +65,7 @@ class SlackAttachmentField
      *
      * @return $this
      */
-    public function long()
+    public function long(): static
     {
         $this->short = false;
 
@@ -75,7 +77,7 @@ class SlackAttachmentField
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'title' => $this->title,
