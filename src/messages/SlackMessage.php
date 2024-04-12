@@ -1,13 +1,13 @@
 <?php
 
-namespace percipiolondon\notifications\messages;
+namespace craftpulse\notifications\messages;
 
 use Closure;
 
 /**
  * Class SlackMessage
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */
@@ -162,7 +162,7 @@ class SlackMessage
      *
      * @return string
      */
-    public function color(): string
+    public function color(): ?string
     {
         switch ($this->level) {
             case 'success':
@@ -172,6 +172,8 @@ class SlackMessage
             case 'warning':
                 return 'warning';
         }
+
+        return null;
     }
 
     /**

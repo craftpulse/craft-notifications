@@ -1,17 +1,17 @@
 <?php
 
-namespace percipiolondon\notifications\channels;
+namespace craftpulse\notifications\channels;
 
 use GuzzleHttp\Client as HttpClient;
-use percipiolondon\notifications\messages\SlackAttachment;
-use percipiolondon\notifications\messages\SlackAttachmentField;
-use percipiolondon\notifications\messages\SlackMessage;
-use percipiolondon\notifications\models\Notification;
+use craftpulse\notifications\messages\SlackAttachment;
+use craftpulse\notifications\messages\SlackAttachmentField;
+use craftpulse\notifications\messages\SlackMessage;
+use craftpulse\notifications\models\Notification;
 
 /**
  * Class SlackWebhookChannel
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */

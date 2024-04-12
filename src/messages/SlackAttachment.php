@@ -1,6 +1,6 @@
 <?php
 
-namespace percipiolondon\notifications\messages;
+namespace craftpulse\notifications\messages;
 
 use Carbon\Carbon;
 use Closure;
@@ -8,7 +8,7 @@ use Closure;
 /**
  * Class SlackAttachment
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */
@@ -149,15 +149,13 @@ class SlackAttachment
     {
         if (is_callable($title)) {
             $callback = $title;
-
             $callback($attachmentField = new SlackAttachmentField());
-
             $this->fields[] = $attachmentField;
 
             return $this;
         }
 
-        $this->fields[$title] = $content;
+        $this->fields['title'] = $content;
 
         return $this;
     }

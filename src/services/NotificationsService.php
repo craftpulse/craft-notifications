@@ -1,14 +1,14 @@
 <?php
 /**
- * Notifications plugin for Craft CMS 3.x
+ * Notifications plugin for Craft CMS 4.x
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://rias.be
- * @copyright Copyright (c) 2018 Rias
+ * @link      https://craftpulse.com
+ * @copyright Copyright (c) 2024 CraftPulse
  */
 
-namespace percipiolondon\notifications\services;
+namespace craftpulse\notifications\services;
 
 use Craft;
 use craft\base\Component;
@@ -18,15 +18,13 @@ use craft\helpers\Json;
 use craft\helpers\StringHelper;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\Collection;
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Pure;
-use percipiolondon\notifications\channels\DatabaseChannel;
-use percipiolondon\notifications\channels\MailChannel;
-use percipiolondon\notifications\channels\SlackWebhookChannel;
-use percipiolondon\notifications\events\RegisterChannelsEvent;
-use percipiolondon\notifications\events\SendEvent;
-use percipiolondon\notifications\models\Notification;
-use percipiolondon\notifications\records\NotificationsRecord;
+use craftpulse\notifications\channels\DatabaseChannel;
+use craftpulse\notifications\channels\MailChannel;
+use craftpulse\notifications\channels\SlackWebhookChannel;
+use craftpulse\notifications\events\RegisterChannelsEvent;
+use craftpulse\notifications\events\SendEvent;
+use craftpulse\notifications\models\Notification;
+use craftpulse\notifications\records\NotificationsRecord;
 use yii\base\Event;
 use yii\base\InvalidCallException;
 
@@ -39,7 +37,7 @@ use yii\base\InvalidCallException;
  *
  * https://craftcms.com/docs/plugins/services
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */
@@ -131,13 +129,8 @@ class NotificationsService extends Component
         // If there's no passed user, get the current logged in user
         $user = $user ?? Craft::$app->getUser();
 
-        if ($user) {
-            $notifications = NotificationsRecord::find()->where(['notifiable' => $user->id])->all();
-            return $this->formatNotificationData($notifications)->toArray();
-        }
-
-        // No notifications when we don't have a passed in or logged in user
-        return [];
+        $notifications = NotificationsRecord::find()->where(['notifiable' => $user->id])->all();
+        return $this->formatNotificationData($notifications)->toArray();
     }
 
     /**
@@ -152,13 +145,9 @@ class NotificationsService extends Component
         // If there's no passed user, get the current logged in user
         $user = $user ?? Craft::$app->getUser();
 
-        if ($user) {
-            $notifications = NotificationsRecord::find()->where(['notifiable' => $user->id, 'read_at' => null])->all();
-            return $this->formatNotificationData($notifications)->toArray();
-        }
 
-        // No notifications when we don't have a passed in or logged in user
-        return [];
+        $notifications = NotificationsRecord::find()->where(['notifiable' => $user->id, 'read_at' => null])->all();
+        return $this->formatNotificationData($notifications)->toArray();
     }
 
     /**
@@ -170,7 +159,7 @@ class NotificationsService extends Component
     {
         // If we don't pass notifications, mark all as read for the current logged in user
         $user = Craft::$app->getUser();
-        if ($user && is_null($notifications)) {
+        if (is_null($notifications)) {
             $notifications = NotificationsRecord::find()->where(['notifiable' => $user->getId()])->all();
         }
 
@@ -186,7 +175,7 @@ class NotificationsService extends Component
         }
 
         // Update the read notifications
-        if (!is_null($notificationIds)) {
+        if (!$notificationIds->isEmpty()) {
             $now = DateTimeHelper::currentUTCDateTime()->format('Y-m-d H:i:s');
             NotificationsRecord::updateAll(['read_at' => $now], ['id' => $notificationIds]);
         }
@@ -197,9 +186,9 @@ class NotificationsService extends Component
      *
      * @param $notifications
      *
-     * @return Collection
+     * @return Collection|\Tightenco\Collect\Support\Collection
      */
-    protected function formatNotificationData($notifications): Collection
+    protected function formatNotificationData($notifications): Collection|\Tightenco\Collect\Support\Collection
     {
         return collect($notifications)->map(function($notification) {
             $notification->data = Json::decode($notification->data);

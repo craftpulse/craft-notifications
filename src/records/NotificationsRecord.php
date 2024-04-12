@@ -1,19 +1,20 @@
 <?php
 /**
- * Notifications plugin for Craft CMS 3.x
+ * Notifications plugin for Craft CMS 4.x
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://percipio.london
- * @copyright Copyright (c) 2020 Percipio Global Ltd.
+ * @link      https://craftpulse.com
+ * @copyright Copyright (c) 2024 CraftPulse
  */
 
-namespace percipiolondon\notifications\records;
+namespace craftpulse\notifications\records;
 
+use craft\db\ActiveQuery;
 use craft\db\ActiveRecord;
 use craft\records\User;
 
-use percipiolondon\notifications\Notifications;
+use craftpulse\notifications\Notifications;
 
 /**
  * Notification Record
@@ -27,15 +28,16 @@ use percipiolondon\notifications\Notifications;
  *
  * http://www.yiiframework.com/doc-2.0/guide-db-active-record.html
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  *
- * @property string $uid
- * @property int    $notifiable
- * @property string $type
- * @property string $data
- * @property mixed $read_at
+ * @property string     $uid
+ * @property string     $id
+ * @property int        $notifiable
+ * @property string     $type
+ * @property string     $data
+ * @property mixed      $read_at
  *
  */
 class NotificationsRecord extends ActiveRecord
@@ -43,22 +45,22 @@ class NotificationsRecord extends ActiveRecord
     /**
     * @return string the table name
     */
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%notifications_notifications}}';
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
-            [['uid', 'notifiable', 'type', 'data'], 'required'],
+            [['id', 'uid', 'notifiable', 'type', 'data'], 'required'],
             [['read_at'], 'date', 'format' => 'php:Y-m-d H:i:s'],
         ];
     }
 
 
 
-    public function getNotifiable()
+    public function getNotifiable(): ActiveQuery
     {
         return $this->hasOne(User::class, ['notifiable' => 'id']);
     }

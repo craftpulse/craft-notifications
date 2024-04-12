@@ -1,13 +1,13 @@
 <?php
 
-namespace percipiolondon\notifications\events;
+namespace craftpulse\notifications\events;
 
 use yii\base\Event;
 
 /**
  * RegisterChannelsEvent class.
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */

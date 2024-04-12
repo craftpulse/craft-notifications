@@ -4,15 +4,15 @@
  * @copyright Copyright (c) Pixel & Tonic, Inc.
  * @license   MIT
  */
-namespace percipiolondon\notifications\events;
+namespace craftpulse\notifications\events;
 
-use percipiolondon\notifications\records\NotificationsRecord;
+use craftpulse\notifications\records\NotificationsRecord;
 use yii\base\Event;
 
 /**
  * Class SendEvent
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */

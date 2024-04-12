@@ -1,12 +1,12 @@
 <?php
 
-namespace percipiolondon\notifications\console\controllers;
+namespace craftpulse\notifications\console\controllers;
 
 use Craft;
 use craft\console\Controller;
 use craft\helpers\DateTimeHelper;
 use Exception;
-use percipiolondon\notifications\records\NotificationsRecord;
+use craftpulse\notifications\records\NotificationsRecord;
 use yii\console\ExitCode;
 use yii\helpers\BaseConsole;
 
@@ -25,7 +25,7 @@ class RemoveNotificationsController extends Controller
     /**
      * Delete notifications older than a time indication which will be added in the strtotime PHP function - default -1 month
      *
-     * @throws Exception
+     * @throws Exception|\Throwable
      */
     public function actionIndex(): int
     {
@@ -39,6 +39,7 @@ class RemoveNotificationsController extends Controller
 
         if ($count) {
             foreach ($notifications->all() as $notification) {
+                /** @var NotificationsRecord $notification */
                 $this->stdout(" - Deleting notification {$notification->id} ... ");
                 $notification->delete();
                 $this->stdout('done' . PHP_EOL, BaseConsole::FG_GREEN);

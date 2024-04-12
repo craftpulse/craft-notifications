@@ -1,22 +1,20 @@
 <?php
 /**
- * Notifications plugin for Craft CMS 3.x
+ * Notifications plugin for Craft CMS 4.x
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://percipio.london
- * @copyright Copyright (c) 2020 Percipio Global Ltd.
+ * @link      https://craftpulse.com
+ * @copyright Copyright (c) 2024 CraftPulse
  */
 
-namespace percipiolondon\notifications\models;
+namespace craftpulse\notifications\models;
 
-use Craft;
 use craft\base\Model;
-
 use yii\base\Event;
 
 /**
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */
@@ -27,12 +25,12 @@ class Notification extends Model
      *
      * @var string
      */
-    public $id;
+    public string $id;
 
     /**
-     * @var Event
+     * @var Event|null
      */
-    public $event = null;
+    public ?Event $event = null;
 
     /**
      * Constructor

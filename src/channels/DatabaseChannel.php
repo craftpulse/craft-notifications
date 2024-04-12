@@ -1,17 +1,17 @@
 <?php
 
-namespace percipiolondon\notifications\channels;
+namespace craftpulse\notifications\channels;
 
 use craft\base\ElementInterface;
 use craft\helpers\Json;
-use percipiolondon\notifications\models\Notification;
-use percipiolondon\notifications\records\NotificationsRecord;
+use craftpulse\notifications\models\Notification;
+use craftpulse\notifications\records\NotificationsRecord;
 use RuntimeException;
 
 /**
  * Class DatabaseChannel
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */
@@ -45,6 +45,7 @@ class DatabaseChannel
 
             return is_array($data) ? $data : [$data];
         } elseif (method_exists($notification, 'toArray')) {
+            /** @var array $notifiable */
             return $notification->toArray($notifiable);
         }
 

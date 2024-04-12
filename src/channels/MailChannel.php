@@ -1,15 +1,15 @@
 <?php
 
-namespace percipiolondon\notifications\channels;
+namespace craftpulse\notifications\channels;
 
 use craft\mail\Message;
 use Exception;
-use percipiolondon\notifications\models\Notification;
+use craftpulse\notifications\models\Notification;
 
 /**
  * Class MailChannel
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */

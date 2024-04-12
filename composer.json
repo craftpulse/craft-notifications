@@ -1,8 +1,8 @@
 {
-    "name": "percipiolondon/craft-notifications",
+    "name": "craftpulse/craft-notifications",
     "description": "Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.",
     "type": "craft-plugin",
-    "version": "4.0.0",
+    "version": "4.1.0",
     "keywords": [
         "craft",
         "cms",
@@ -13,15 +13,15 @@
         "email"
     ],
     "support": {
-        "email": "support@percipio.london",
-        "docs": "https://github.com/percipioglobal/craft-notifications/blob/master/README.md",
-        "issues": "https://github.com/percipioglobal/craft-notifications/issues"
+        "email": "support@craftpulse.com",
+        "docs": "https://github.com/craftpulse/craft-notifications/blob/master/README.md",
+        "issues": "https://github.com/craftpulse/craft-notifications/issues"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": "Percipio Global Ltd",
-            "homepage": "https://percipio.london"
+            "name": "CraftPulse",
+            "homepage": "https://craftpulse.com"
         }
     ],
     "minimum-stability": "dev",
@@ -38,21 +38,21 @@
     },
     "autoload": {
         "psr-4": {
-            "percipiolondon\\notifications\\": "src/"
+            "craftpulse\\notifications\\": "src/"
         }
     },
     "extra": {
         "name": "Notifications",
         "handle": "notifications",
         "schemaVersion": "1.0.0",
-        "developer": "percipiolondon",
-        "developerUrl": "https://percipio.london",
-        "documentationUrl": "https://github.com/percipioglobal/craft-notifications/blob/v4/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/percipioglobal/craft-notifications/v4/CHANGELOG.md",
+        "developer": "craftpulse",
+        "developerUrl": "https://craftpulse.com",
+        "documentationUrl": "https://github.com/craftpulse/craft-notifications/blob/v4/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/craftpulse/craft-notifications/v4/CHANGELOG.md",
         "components": {
-            "notificationsService": "percipiolondon\\notifications\\services\\NotificationsService"
+            "notificationsService": "craftpulse\\notifications\\services\\NotificationsService"
         },
-        "class": "percipiolondon\\notifications\\Notifications"
+        "class": "craftpulse\\notifications\\Notifications"
     },
     "scripts": {
         "phpstan": "phpstan --memory-limit=1G"

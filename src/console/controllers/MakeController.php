@@ -1,14 +1,14 @@
 <?php
 /**
- * Notifications plugin for Craft CMS 3.x
+ * Notifications plugin for Craft CMS 4.x
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://percipio.london
- * @copyright Copyright (c) 2020 Percipio Global Ltd.
+ * @link      https://craftpulse.com
+ * @copyright Copyright (c) 2024 CraftPulse
  */
 
-namespace percipiolondon\notifications\console\controllers;
+namespace craftpulse\notifications\console\controllers;
 
 use Craft;
 
@@ -39,7 +39,7 @@ use yii\console\Controller;
  *
  * ./craft notifications/default/do-something
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */
@@ -75,7 +75,7 @@ class MakeController extends Controller
         }
 
         // Make sure the directory exists
-        $dir = CRAFT_BASE_PATH . '/notifications';
+        $dir = Craft::$app->basePath . '/notifications';
         if (!is_dir($dir)) {
             FileHelper::createDirectory($dir);
         }
@@ -95,7 +95,7 @@ class MakeController extends Controller
      */
     protected function getStub(): string
     {
-        return Craft::$app->path->getVendorPath() . '/percipiolondon/craft-notifications/src/notification.stub';
+        return Craft::$app->path->getVendorPath() . '/craftpulse/craft-notifications/src/notification.stub';
     }
 
     /**
@@ -106,7 +106,7 @@ class MakeController extends Controller
      */
     protected function alreadyExists(string $rawName): bool
     {
-        return file_exists(CRAFT_BASE_PATH . "/notifications/{$rawName}.php");
+        return file_exists(Craft::$app->basePath . '/notifications/{$rawName}.php');
     }
 
     /**

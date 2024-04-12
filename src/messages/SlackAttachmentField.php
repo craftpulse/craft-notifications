@@ -1,13 +1,13 @@
 <?php
 
-namespace percipiolondon\notifications\messages;
+namespace craftpulse\notifications\messages;
 
 use JetBrains\PhpStorm\ArrayShape;
 
 /**
  * Class SlackAttachmentField
  *
- * @author    Percipio Global Ltd.
+ * @author    CraftPulse
  * @package   Notifications
  * @since     1.0.0
  */

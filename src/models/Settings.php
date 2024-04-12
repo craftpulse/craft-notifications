@@ -1,6 +1,6 @@
 <?php
 
-namespace percipiolondon\notifications\models;
+namespace craftpulse\notifications\models;
 
 use craft\base\Model;
 
