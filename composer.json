@@ -2,7 +2,7 @@
     "name": "craftpulse/craft-notifications",
     "description": "Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.",
     "type": "craft-plugin",
-    "version": "4.1.0",
+    "version": "4.2.0",
     "keywords": [
         "craft",
         "cms",
@@ -30,8 +30,7 @@
         "php": "^8.0.2",
         "craftcms/cms": "^4.0.0-beta.1",
         "guzzlehttp/guzzle": "^7.0",
-        "nesbot/carbon": "^2.19",
-        "tightenco/collect": "^5.5"
+        "nesbot/carbon": "^2.19"
     },
     "require-dev": {
         "craftcms/phpstan": "dev-main"

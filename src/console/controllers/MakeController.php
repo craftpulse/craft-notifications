@@ -95,7 +95,7 @@ class MakeController extends Controller
      */
     protected function getStub(): string
     {
-        return Craft::$app->path->getVendorPath() . '/craftpulse/craft-notifications/src/notification.stub';
+        return Craft::$app->path->getVendorPath() . 'craftpulse/craft-notifications/src/notification.stub';
     }
 
     /**

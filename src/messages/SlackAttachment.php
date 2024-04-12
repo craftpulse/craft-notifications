@@ -17,72 +17,72 @@ class SlackAttachment
     /**
      * The attachment's title.
      *
-     * @var string
+     * @var string|null
      */
-    public string $title;
+    public ?string $title = null;
 
     /**
      * The attachment's URL.
      *
-     * @var string
+     * @var string|null
      */
-    public string $url;
+    public ?string $url = null;
 
     /**
      * The attachment's text content.
      *
-     * @var string
+     * @var string|null
      */
-    public string $content;
+    public ?string $content = null;
 
     /**
      * A plain-text summary of the attachment.
      *
-     * @var string
+     * @var string|null
      */
-    public string $fallback;
+    public ?string $fallback = null;
 
     /**
      * The attachment's color.
      *
-     * @var string
+     * @var string|null
      */
-    public string $color;
+    public ?string $color = null;
 
     /**
      * The attachment's fields.
      *
-     * @var array
+     * @var array|null
      */
-    public array $fields;
+    public ?array $fields = null;
 
     /**
      * The fields containing markdown.
      *
-     * @var array
+     * @var array|null
      */
-    public array $markdown;
+    public ?array $markdown = null;
 
     /**
      * The attachment's footer.
      *
-     * @var string
+     * @var string|null
      */
-    public string $footer;
+    public ?string $footer = null;
 
     /**
      * The attachment's footer icon.
      *
-     * @var string
+     * @var string|null
      */
-    public string $footerIcon;
+    public ?string $footerIcon = null;
 
     /**
      * The attachment's timestamp.
      *
-     * @var int
+     * @var int|null
      */
-    public int $timestamp;
+    public ?int $timestamp = null;
 
     /**
      * Set the title of the attachment.

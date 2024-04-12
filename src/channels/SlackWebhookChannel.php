@@ -53,7 +53,7 @@ class SlackWebhookChannel
      * @param  SlackMessage  $message
      * @return array
      */
-    protected function buildJsonPayload(SlackMessage $message)
+    protected function buildJsonPayload(SlackMessage $message): array
     {
         $optionalFields = array_filter([
             'username' => data_get($message, 'username'),
@@ -75,7 +75,7 @@ class SlackWebhookChannel
      * @param  SlackMessage  $message
      * @return array
      */
-    protected function attachments(SlackMessage $message)
+    protected function attachments(SlackMessage $message): array
     {
         return collect($message->attachments)->map(function($attachment) use ($message) {
             return array_filter([
@@ -99,7 +99,7 @@ class SlackWebhookChannel
      * @param  SlackAttachment  $attachment
      * @return array
      */
-    protected function fields(SlackAttachment $attachment)
+    protected function fields(SlackAttachment $attachment): array
     {
         return collect($attachment->fields)->map(function($value, $key) {
             if ($value instanceof SlackAttachmentField) {
