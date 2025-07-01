@@ -1,19 +1,23 @@
 <?php
+/**
+ * Notifications plugin for Craft CMS 5.x
+ *
+ * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
+ *
+ * @link      https://craft-pulse.com
+ * @copyright Copyright (c) 2025 CraftPulse
+ */
 
-namespace percipiolondon\notifications\channels;
+namespace craftpulse\notifications\channels;
 
 use craft\base\ElementInterface;
 use craft\helpers\Json;
-use percipiolondon\notifications\models\Notification;
-use percipiolondon\notifications\records\NotificationsRecord;
+use craftpulse\notifications\models\Notification;
+use craftpulse\notifications\records\NotificationsRecord;
 use RuntimeException;
 
 /**
  * Class DatabaseChannel
- *
- * @author    Percipio Global Ltd.
- * @package   Notifications
- * @since     1.0.0
  */
 class DatabaseChannel
 {

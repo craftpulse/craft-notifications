@@ -1,6 +1,6 @@
 ![icon](./resources/img/banner.png)
 
-# Notifications plugin for Craft CMS 3.x
+# Notifications plugin for Craft CMS 5.x
 
 Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
 
@@ -20,17 +20,13 @@ Send notifications across a variety of delivery channels, including mail and Sla
 1. [Notification events](#notification-events)
 1. [Custom channels](#custom-channels)
 
-## Support Open Source. Buy beer.
-
-This plugin is licensed under a MIT license, which means that it's completely free open source software, and you can use it for whatever and however you wish. If you're using it and want to support the development, buy me a beer over at Beerpay!
-
 ## Requirements
 
-This plugin requires Craft CMS 3.1.0 or later.
+This plugin requires Craft CMS 5.0.0 or later.
 
 ## Installation
 
-To install the plugin, follow these instructions.
+To install Notifications, follow these steps:
 
 1. Open your terminal and go to your Craft project:
 
@@ -38,9 +34,13 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require percipioglobal/craft-notifications
+        composer require craftpulse/craft-notifications
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Notifications.
+3. Install the plugin via `./craft install/plugin notifications` via the CLI, or in the Control Panel, go to Settings → Plugins and click the “Install” button for Password Policy.
+
+You can also install Notifications via the **Plugin Store** in the Craft Control Panel.
+
+Notifications works on Craft 5.x.
 
 4. Copy the `config.php` file to `config/notifications.php` in your application.
 
@@ -114,7 +114,7 @@ We know the event is an `ElementEvent`, which contains the `sender` and an `isNe
 From a plugin, you can use the `notificationsService` to send you own notifications.
 
 ```php
-use percipioglobal\notifications\Notifications; 
+use craftpulse\notifications\Notifications; 
 use app\notifications\BlogPostAdded; 
  
 Notifications::getInstance()->notificationsService->send(new BlogPostAdded());
@@ -151,7 +151,7 @@ Let's see how we can loop over the notifications, this automatically uses the cu
 
 You can also retrieve the notifications through the `notificationsService`
 ```php
-use percipioglobal\notifications\Notifications; 
+use craftpulse\notifications\Notifications; 
 
 // All unread notifications
 Notifications::getInstance()->notificationsService->getAllUnread();
@@ -170,7 +170,7 @@ To mark notifications as read, we can use the Twig variable or the `notification
 ```
 
 ```php
-use percipioglobal\notifications\Notifications; 
+use craftpulse\notifications\Notifications; 
 
 Notifications::getInstance()->notificationsService->markAsRead($notification);
 ```
@@ -222,7 +222,7 @@ return [
 The implementation and documentation are mostly based on [Laravel Notifications](https://laravel.com/docs/5.5/notifications).
 
 ### Formatting Slack notifications
-If a notification supports being sent as a Slack message, you should define a `toSlack` method on the notification class. This method should return a `percipioglobal\notifications\messages\SlackMessage` instance. Slack messages may contain text content as well as an "attachment" that formats additional text or an array of fields. Let's take a look at a basic `toSlack` example:
+If a notification supports being sent as a Slack message, you should define a `toSlack` method on the notification class. This method should return a `craftpulse\notifications\messages\SlackMessage` instance. Slack messages may contain text content as well as an "attachment" that formats additional text or an array of fields. Let's take a look at a basic `toSlack` example:
 
 ```php
 /**
@@ -356,7 +356,7 @@ public function toSlack($notifiable)
 ```
 
 ## Notification Events
-When a notification is sent, there are two events that get triggered, the `NotificationsService::EVENT_BEFORE_SEND` and `NotificationsService::EVENT_AFTER_SEND` which send a `percipioglobal\notifications\events\SendEvent` event.
+When a notification is sent, there are two events that get triggered, the `NotificationsService::EVENT_BEFORE_SEND` and `NotificationsService::EVENT_AFTER_SEND` which send a `craftpulse\notifications\events\SendEvent` event.
 
 The `sendEvent` contains the following properties:
 
@@ -412,7 +412,7 @@ Your `VoiceChannel` class would then look like this:
 
 namespace app\channels;
 
-use percipioglobal\notifications\models\Notification;
+use craftpulse\notifications\models\Notification;
 
 class VoiceChannel
 {
@@ -420,7 +420,7 @@ class VoiceChannel
      * Send the given notification.
      *
      * @param  mixed  $notifiable
-     * @param  \percipioglobal\notifications\models\Notification  $notification
+     * @param  \craftpulse\notifications\models\Notification  $notification
      * @return void
      */
     public function send($notifiable, Notification $notification)
@@ -439,7 +439,7 @@ namespace App\Notifications;
 
 use app\channels\VoiceChannel;
 use app\channels\messages\VoiceMessage;
-use percipioglobal\notifications\models\Notification;
+use craftpulse\notifications\models\Notification;
 
 class InvoicePaid extends Notification
 {

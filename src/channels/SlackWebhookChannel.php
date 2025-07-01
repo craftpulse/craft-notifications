@@ -1,19 +1,23 @@
 <?php
+/**
+ * Notifications plugin for Craft CMS 5.x
+ *
+ * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
+ *
+ * @link      https://craft-pulse.com
+ * @copyright Copyright (c) 2025 CraftPulse
+ */
 
-namespace percipiolondon\notifications\channels;
+namespace craftpulse\notifications\channels;
 
 use GuzzleHttp\Client as HttpClient;
-use percipiolondon\notifications\messages\SlackAttachment;
-use percipiolondon\notifications\messages\SlackAttachmentField;
-use percipiolondon\notifications\messages\SlackMessage;
-use percipiolondon\notifications\models\Notification;
+use craftpulse\notifications\messages\SlackAttachment;
+use craftpulse\notifications\messages\SlackAttachmentField;
+use craftpulse\notifications\messages\SlackMessage;
+use craftpulse\notifications\models\Notification;
 
 /**
  * Class SlackWebhookChannel
- *
- * @author    Percipio Global Ltd.
- * @package   Notifications
- * @since     1.0.0
  */
 class SlackWebhookChannel
 {

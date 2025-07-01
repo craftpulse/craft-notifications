@@ -1,23 +1,23 @@
 <?php
 /**
- * Notifications plugin for Craft CMS 3.x
+ * Notifications plugin for Craft CMS 5.x
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://percipio.london
- * @copyright Copyright (c) 2020 Percipio Global Ltd
+ * @link      https://craft-pulse.com
+ * @copyright Copyright (c) 2025 CraftPulse
  */
 
-namespace percipiolondon\notifications;
+namespace craftpulse\notifications;
 
 use Craft;
 use craft\base\Plugin;
 use craft\console\Application as ConsoleApplication;
 use craft\web\twig\variables\CraftVariable;
-use percipiolondon\notifications\models\Notification;
-use percipiolondon\notifications\models\Settings;
-use percipiolondon\notifications\variables\NotificationsVariable;
-use percipiolondon\notifications\services\NotificationsService;
+use craftpulse\notifications\models\Notification;
+use craftpulse\notifications\models\Settings;
+use craftpulse\notifications\variables\NotificationsVariable;
+use craftpulse\notifications\services\NotificationsService;
 use yii\base\Event;
 
 /**
@@ -29,10 +29,6 @@ use yii\base\Event;
  * as well as some semi-advanced concepts like object-oriented programming and PHP namespaces.
  *
  * https://craftcms.com/docs/plugins/introduction
- *
- * @author    Percipio Global Ltd.
- * @package   Notifications
- * @since     1.0.0
  *
  * @property  NotificationsService $notificationsService
  *
@@ -72,7 +68,7 @@ class Notifications extends Plugin
 
         // Add in our console commands
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'percipiolondon\notifications\console\controllers';
+            $this->controllerNamespace = 'craftpulse\notifications\console\controllers';
         }
 
         // Register our variables

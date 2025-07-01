@@ -1,14 +1,14 @@
 <?php
 /**
- * Notifications plugin for Craft CMS 3.x
+ * Notifications plugin for Craft CMS 5.x
  *
  * Send notifications across a variety of delivery channels, including mail and Slack. Notifications may also be stored in a database so they may be displayed in your web interface.
  *
- * @link      https://rias.be
- * @copyright Copyright (c) 2018 Rias
+ * @link      https://craft-pulse.com
+ * @copyright Copyright (c) 2025 CraftPulse
  */
 
-namespace percipiolondon\notifications\services;
+namespace craftpulse\notifications\services;
 
 use Craft;
 use craft\base\Component;
@@ -18,15 +18,13 @@ use craft\helpers\Json;
 use craft\helpers\StringHelper;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\Collection;
-use JetBrains\PhpStorm\ArrayShape;
-use JetBrains\PhpStorm\Pure;
-use percipiolondon\notifications\channels\DatabaseChannel;
-use percipiolondon\notifications\channels\MailChannel;
-use percipiolondon\notifications\channels\SlackWebhookChannel;
-use percipiolondon\notifications\events\RegisterChannelsEvent;
-use percipiolondon\notifications\events\SendEvent;
-use percipiolondon\notifications\models\Notification;
-use percipiolondon\notifications\records\NotificationsRecord;
+use craftpulse\notifications\channels\DatabaseChannel;
+use craftpulse\notifications\channels\MailChannel;
+use craftpulse\notifications\channels\SlackWebhookChannel;
+use craftpulse\notifications\events\RegisterChannelsEvent;
+use craftpulse\notifications\events\SendEvent;
+use craftpulse\notifications\models\Notification;
+use craftpulse\notifications\records\NotificationsRecord;
 use yii\base\Event;
 use yii\base\InvalidCallException;
 
@@ -39,9 +37,6 @@ use yii\base\InvalidCallException;
  *
  * https://craftcms.com/docs/plugins/services
  *
- * @author    Percipio Global Ltd.
- * @package   Notifications
- * @since     1.0.0
  */
 class NotificationsService extends Component
 {
