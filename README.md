@@ -94,7 +94,7 @@ In our `BlogPostAdded` class we can then use the `via` function to determine if 
  *
  * @return array
  */
-public function via()
+public function via(): array
 {
     $entry = $this->event->sender;
 
@@ -449,7 +449,7 @@ class InvoicePaid extends Notification
      * @param  mixed  $notifiable
      * @return array|string
      */
-    public function via($notifiable)
+    public function via($notifiable): array
     {
         return [
             'voice' => '<YOUR_DESTINATION>',
