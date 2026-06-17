@@ -10,6 +10,8 @@
 
 namespace craftpulse\notifications\variables;
 
+use craft\helpers\DateTimeHelper;
+
 use craftpulse\notifications\Notifications;
 
 /**
@@ -50,6 +52,12 @@ class NotificationsVariable
 
     public function markAsRead($notification = null)
     {
-        return Notifications::$plugin->notificationsService->markAsRead($notification);
+        $now = DateTimeHelper::currentUTCDateTime()->format('Y-m-d H:i:s');
+        return Notifications::$plugin->notificationsService->updateReadStatus($notification, $now);
+    }
+
+    public function markAsUnread($notification = null)
+    {
+        return Notifications::$plugin->notificationsService->updateReadStatus($notification, null);
     }
 }

@@ -13,11 +13,13 @@ namespace craftpulse\notifications\services;
 use Craft;
 use craft\base\Component;
 use craft\elements\User;
-use craft\helpers\DateTimeHelper;
 use craft\helpers\Json;
 use craft\helpers\StringHelper;
+
 use GuzzleHttp\Client as HttpClient;
+
 use Illuminate\Support\Collection;
+
 use craftpulse\notifications\channels\DatabaseChannel;
 use craftpulse\notifications\channels\MailChannel;
 use craftpulse\notifications\channels\SlackWebhookChannel;
@@ -25,6 +27,7 @@ use craftpulse\notifications\events\RegisterChannelsEvent;
 use craftpulse\notifications\events\SendEvent;
 use craftpulse\notifications\models\Notification;
 use craftpulse\notifications\records\NotificationsRecord;
+
 use yii\base\Event;
 use yii\base\InvalidCallException;
 
@@ -157,20 +160,20 @@ class NotificationsService extends Component
     }
 
     /**
-     * Mark a notification as read
+     * Mark a notification as unread
      *
      * @param $notifications
      */
-    public function markAsRead($notifications = null)
+    public function updateReadStatus($notifications = null, $readAt = null)
     {
-        // If we don't pass notifications, mark all as read for the current logged in user
+        // If we don't pass notifications, update all notifications for the current logged in user
         $user = Craft::$app->getUser();
         if ($user && is_null($notifications)) {
             $notifications = NotificationsRecord::find()->where(['notifiable' => $user->getId()])->all();
         }
 
         if(is_array($notifications)) {
-                // Make sure we have a collection to loop over
+            // Make sure we have a collection to loop over
             $notifications = collect($notifications);
 
             $notificationIds = $notifications->map(function($notification) {
@@ -182,8 +185,7 @@ class NotificationsService extends Component
 
         // Update the read notifications
         if (!is_null($notificationIds)) {
-            $now = DateTimeHelper::currentUTCDateTime()->format('Y-m-d H:i:s');
-            NotificationsRecord::updateAll(['read_at' => $now], ['id' => $notificationIds]);
+            NotificationsRecord::updateAll(['read_at' => $readAt], ['id' => $notificationIds]);
         }
     }
 
