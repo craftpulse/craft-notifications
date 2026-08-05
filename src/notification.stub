@@ -34,7 +34,7 @@ class DummyClass extends Notification
      *
      * @return array
      */
-    public function via()
+    public function via(): array
     {
         return [];
     }
